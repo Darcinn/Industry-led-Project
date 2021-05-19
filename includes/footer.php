@@ -2,7 +2,7 @@
   <footer class="footer mr-auto navbar-dark">
     <div class="row">
       <div class="col-12 col-md">
-        <img class="logo" style="height: 50px; width: 100px;" src="img/Logo.png" alt="Webflix Logo">
+        <img class="logo" style="height: 50px; width: 100px;" src="img/logo.png" alt="Edinburgh College">
         <small class="d-block mb-3 text-muted">© 2021</small>
       </div>
       <div class="col-6 col-md text-white">

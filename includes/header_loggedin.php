@@ -54,7 +54,7 @@
       </ul>
     </div>
     <div class="mx-auto order-0">
-      <a class="navbar-brand" href="index.php"><img class="logo" style="height: 50px; width: 100px;" src="img/Logo.png" alt="ECinema"></a>
+      <a class="navbar-brand" href="index.php"><img class="logo" style="height: 50px; width: 100px;" src="img/logo.png" alt="Edinburgh College"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
         <span class="navbar-toggler-icon"></span>
       </button>
