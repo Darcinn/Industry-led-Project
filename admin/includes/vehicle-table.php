@@ -7,27 +7,29 @@ require('../includes/connect_db.php');
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table mr-1"></i>
-        Series Table
+        Vehicle Table
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="seriesTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Program ID</th>
-                        <th>Program Title</th>
-                        <th>Genre</th>
-                        <th>Episodes</th>
-                        <th>Actions</th>
+                        <th>Vehicle ID</th>
+                        <th>Campus ID</th>
+                        <th>Vehicle Make</th>
+                        <th>Vehicle Model</th>
+                        <th>Vehicle Colour</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Program ID</th>
-                        <th>Program Title</th>
-                        <th>Genre</th>
-                        <th>Episodes</th>
-                        <th>Actions</th>
+                        <th>Vehicle ID</th>
+                        <th>Campus ID</th>
+                        <th>Vehicle Make</th>
+                        <th>Vehicle Model</th>
+                        <th>Vehicle Colour</th>
+                        <th>Status</th>
                     </tr>
                 </tfoot>
                 <tbody>
