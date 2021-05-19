@@ -24,7 +24,7 @@
                 </a>
 
                 <div class="collapse" id="collapseFleet" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavManagementPages">
 
                         <a class="nav-link" href="campus.php">
                             Campus
@@ -44,7 +44,7 @@
                 </a>
 
                 <div class="collapse" id="collapseBooking" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavBookingPages">
 
                         <a class="nav-link" href="campus.php">
                             Calendar
