@@ -46,11 +46,11 @@
                 <div class="collapse" id="collapseBooking" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavBookingPages">
 
-                        <a class="nav-link" href="campus.php">
+                        <a class="nav-link" href="calendar.php">
                             Calendar
                         </a>
 
-                        <a class="nav-link" href="vehicle.php">
+                        <a class="nav-link" href="bookings.php">
                             Current Bookings
                         </a>
 
@@ -58,11 +58,11 @@
                 </div>
 
                 <div class="sb-sidenav-menu-heading">Logs</div>
-                <a class="nav-link" href="users.php">
+                <a class="nav-link" href="vehiclelogs.php">
                     <div class="sb-nav-link-icon"><em class="fas fa-search"></em></div>
                     Vehicle Check Sheets
                 </a>
-                <a class="nav-link" href="users.php">
+                <a class="nav-link" href="triplogs.php">
                     <div class="sb-nav-link-icon"><em class="fas fa-map-marker"></em></div>
                     Trip Logs
                 </a>

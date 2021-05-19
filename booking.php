@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['account_status'] == 2) {
 
 <div class="container">
 
-
+  <div id='calendar'></div>
 
 </div>
 
