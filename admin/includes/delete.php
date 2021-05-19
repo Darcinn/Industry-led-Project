@@ -27,16 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
   header("Refresh:0; url=../users.php");
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['genre_name'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['campus_id'])) {
 
   $errors = array();
 
-  $id = $_POST['genre_name'];
+  $id = $_POST['campus_id'];
 
   # On success new password into 'users' database table.
-  if (!empty($_POST['genre_name'])) {
+  if (!empty($_POST['campus_id'])) {
 
-    $q = "DELETE FROM genre WHERE genre_name='$id'";
+    $q = "DELETE FROM campus WHERE campus_id='$id'";
     $r = @mysqli_query($link, $q);
 
   }
@@ -45,19 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['genre_name'])) {
     alert($msg);
   }
 
-  header("Refresh:0; url=../genres.php");
+  header("Refresh:0; url=../campus.php");
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['mov_id'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vehicle_id'])) {
 
   $errors = array();
 
-  $id = $_POST['mov_id'];
+  $id = $_POST['vehicle_id'];
 
   # On success new password into 'users' database table.
-  if (!empty($_POST['mov_id'])) {
+  if (!empty($_POST['vehicle_id'])) {
 
-    $q = "DELETE FROM movie WHERE mov_id='$id'";
+    $q = "DELETE FROM vehicle WHERE vehicle_id='$id'";
     $r = @mysqli_query($link, $q);
 
   }
@@ -66,50 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['mov_id'])) {
     alert($msg);
   }
 
-  header("Refresh:0; url=../movies.php");
+  header("Refresh:0; url=../vehicle.php");
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['tv_id'])) {
-
-  $errors = array();
-
-  $id = $_POST['tv_id'];
-
-  # On success new password into 'users' database table.
-  if (!empty($_POST['tv_id'])) {
-
-    $q = "DELETE FROM tv WHERE tv_id='$id'";
-    $r = @mysqli_query($link, $q);
-
-  }
-
-  foreach ($errors as $msg) {
-    alert($msg);
-  }
-
-  header("Refresh:0; url=../tv.php");
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['episode_id'])) {
-
-  $errors = array();
-
-  $id = $_POST['episode_id'];
-
-  # On success new password into 'users' database table.
-  if (!empty($_POST['episode_id'])) {
-
-    $q = "DELETE FROM episode WHERE episode_id='$id'";
-    $r = @mysqli_query($link, $q);
-
-  }
-
-  foreach ($errors as $msg) {
-    alert($msg);
-  }
-
-  header("Refresh:0; url=../tv.php");
-}
 
 
 function alert($msg)

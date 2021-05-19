@@ -26,7 +26,7 @@ if ($_SESSION['account_level'] == "2") {
                 </ol>
                 <div class="card mb-4">
                     <div class="card-body">
-                        This page displays various dirrerent information regarding the userbase of Webflix.
+                        Some text about the fleet management user page.
                     </div>
                 </div>
                 <?php

@@ -18,12 +18,14 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
     # Access session.
     session_start();
     $_SESSION[ 'user_id' ] = $data[ 'user_id' ] ;
-    $_SESSION[ 'first_name' ] = $data[ 'first_name' ] ;
-    $_SESSION[ 'last_name' ] = $data[ 'last_name' ] ;
+    $_SESSION[ 'forename' ] = $data[ 'forename' ] ;
+    $_SESSION[ 'surname' ] = $data[ 'surname' ] ;
     $_SESSION[ 'email' ] = $data[ 'email' ] ;
     $_SESSION[ 'pass' ] = $data[ 'pass' ] ;
-    $_SESSION[ 'subscribed' ] = $data[ 'subscribed' ] ;
+    $_SESSION[ 'phone_no' ] = $data[ 'phone_no' ] ;
+    $_SESSION[ 'license_expiry' ] = $data[ 'license_expiry' ] ;
     $_SESSION[ 'account_level' ] = $data[ 'account_level' ] ;
+    $_SESSION[ 'account_status' ] = $data[ 'account_status' ] ;
     load ( 'user_login.php' ) ;
   }
   # Or on failure set errors.
@@ -35,5 +37,3 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
 
 # Continue to display login page on failure.
 include ( 'login.php' ) ;
-
-?>

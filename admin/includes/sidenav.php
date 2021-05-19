@@ -19,7 +19,7 @@
 
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                     <div class="sb-nav-link-icon"><em class="fas fa-book-open"></em></div>
-                    Content
+                    Fleet Management
                     <div class="sb-sidenav-collapse-arrow"><em class="fas fa-angle-down"></em></div>
                 </a>
 
@@ -54,7 +54,7 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            <?php echo "{$_SESSION['first_name']}"; ?>
+            <?php echo "{$_SESSION['forename']}"; ?>
         </div>
     </nav>
 </div>

@@ -51,9 +51,9 @@ require('../includes/connect_db.php');
                                 <td><?php echo "{$row['phone_no']}"; ?></td>
                                 <td><?php echo "{$row['license_expiry']}"; ?></td>
                                 <td><?php if ($row['account_status'] == "1") {
-                                        echo "Active";
-                                    } else {
                                         echo "Blocked";
+                                    } else {
+                                        echo "Active";
                                     } ?></td>
                                 <td><?php if ($row['account_level'] == "2") {
                                         echo "Admin";
@@ -83,14 +83,14 @@ require('../includes/connect_db.php');
                                                 <form action="includes/edit.php" method="post">
                                                     <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
                                                     <div class="form-group">
-                                                        <input type="text" name="first_name" class="form-control" placeholder="<?php echo "{$row['forename']}"; ?>" value="<?php if (isset($_POST['first_name'])) {
-                                                                                                                                                                                echo $_POST['first_name'];
+                                                        <input type="text" name="forename" class="form-control" placeholder="<?php echo "{$row['forename']}"; ?>" value="<?php if (isset($_POST['forename'])) {
+                                                                                                                                                                                echo $_POST['forename'];
                                                                                                                                                                             } ?>">
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" name="last_name" class="form-control" placeholder="<?php echo "{$row['surname']}"; ?>" value="<?php if (isset($_POST['last_name'])) {
-                                                                                                                                                                                echo $_POST['last_name'];
+                                                        <input type="text" name="surname" class="form-control" placeholder="<?php echo "{$row['surname']}"; ?>" value="<?php if (isset($_POST['surname'])) {
+                                                                                                                                                                                echo $_POST['surname'];
                                                                                                                                                                             } ?>">
 
                                                     </div>
@@ -101,19 +101,20 @@ require('../includes/connect_db.php');
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="date" name="date_of_birth" class="form-control" placeholder="<?php echo "{$row['date_of_birth']}"; ?>" value="<?php if (isset($_POST['date_of_birth'])) {
-                                                                                                                                                                                        echo $_POST['date_of_birth'];
-                                                                                                                                                                                    } ?>">
-
-                                                    </div>
-                                                    <div class="form-group">
                                                         <input type="text" name="phone_no" class="form-control" placeholder="<?php echo "{$row['phone_no']}"; ?>" value="<?php if (isset($_POST['phone_no'])) {
-                                                                                                                                                                                    echo $_POST['phone_no'];
-                                                                                                                                                                                } ?>">
+                                                                                                                                                                                echo $_POST['phone_no'];
+                                                                                                                                                                            } ?>">
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <select name="account_type" class="form-control">
+                                                        <select name="account_status" class="form-control">
+                                                            <option value="" selected disabled hidden>Account Status</option>
+                                                            <option value="1">Blocked</option>
+                                                            <option value="2">Active</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select name="account_level" class="form-control">
                                                             <option value="" selected disabled hidden>Account Type</option>
                                                             <option value="1">User</option>
                                                             <option value="2">Admin</option>
