@@ -51,15 +51,27 @@ require('../includes/connect_db.php');
                                     <?php
                                     $q = "SELECT * FROM campus WHERE campus_id = '{$row['campus_id']}'";
                                     $r = mysqli_query($link, $q);
-                                    $cam = mysqli_fetch_array($r, MYSQLI_ASSOC);
+                                    if (mysqli_num_rows($r) == 0) {
+                                        echo "No Campus Assigned";
+                                    } else {
+                                        $cam = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
-                                    echo "{$cam['campus_name']}";
+                                        echo "{$cam['campus_name']}";
+                                    }
                                     ?>
                                 </td>
                                 <td><?php echo "{$row['vehicle_make']}"; ?></td>
                                 <td><?php echo "{$row['vehicle_model']}"; ?></td>
                                 <td><?php echo "{$row['vehicle_colour']}"; ?></td>
-                                <td><?php echo "{$row['vehicle_status']}"; ?></td>
+                                <td>
+                                    <?php
+                                    if ($row['vehicle_status'] == 1) {
+                                        echo "Inactive";
+                                    } else {
+                                        echo "Active";
+                                    }
+                                    ?>
+                                </td>
                                 <td>
                                     <div class="row">
                                         <a href="#editvehicleModal<?php echo "{$row['vehicle_id']}"; ?>" data-toggle="modal" style="text-decoration:none; color:inherit;"><button class="btn"><em class="fa fa-edit"></em> Edit</a></button>
