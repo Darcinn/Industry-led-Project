@@ -177,7 +177,7 @@ include('includes/footer.php');
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="change-password.php" method="post">
+				<form action="includes/change-password.php" method="post">
 					<div class="form-group">
 						<input type="email" name="email" class="form-control" placeholder="Confirm Email" value="<?php if (isset($_POST['email'])) {
 																														echo $_POST['email'];

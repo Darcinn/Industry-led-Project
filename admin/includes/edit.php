@@ -109,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vehicle_id'])) {
   $id = $_POST['vehicle_id'];
 
   if (!empty($_POST['vehicle_reg'])) {
-    $reg = $_POST['vehicle_id'];
-    $q = "UPDATE vehicle SET vehicle_id='$reg' WHERE vehicle_id='$id'";
+    $reg = $_POST['vehicle_reg'];
+    $q = "UPDATE vehicle SET vehicle_reg='$reg' WHERE vehicle_id='$id'";
     $r = @mysqli_query($link, $q);
   }
 

@@ -4,7 +4,7 @@
 if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
 {
   # Open database connection.
-  require ( 'includes/connect_db.php' ) ;
+  require ( 'connect_db.php' ) ;
 
   # Get connection, load, and validate functions.
   require ( 'login_tools.php' ) ;
@@ -26,7 +26,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
     $_SESSION[ 'license_expiry' ] = $data[ 'license_expiry' ] ;
     $_SESSION[ 'account_level' ] = $data[ 'account_level' ] ;
     $_SESSION[ 'account_status' ] = $data[ 'account_status' ] ;
-    load ( 'user_login.php' ) ;
+    load ( '../user_login.php' ) ;
   }
   # Or on failure set errors.
   else { $errors = $data; } 
@@ -36,4 +36,4 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
 }
 
 # Continue to display login page on failure.
-include ( 'login.php' ) ;
+include ( '../login.php' ) ;

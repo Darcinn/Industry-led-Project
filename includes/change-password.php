@@ -6,7 +6,7 @@ $currentPage = 'account';
 if(isset($_SESSION['user_id']) ){
     include('includes/header_loggedin.php');
 } else {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 
 # Redirect if not logged in.
@@ -19,7 +19,7 @@ $page_title = 'Change Password' ;
 if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
 {
   # Connect to the database.
-  require ('includes/connect_db.php'); 
+  require ('connect_db.php'); 
   
   # Initialize an error array.
   $errors = array();
@@ -53,7 +53,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
     $r = @mysqli_query ( $link, $q ) ;
     if ($r)
     {
-       header("Location: user_login.php");
+       header("Location: ../user_login.php");
     } else {
         echo "Error deleting record: " . $link->error;
     }

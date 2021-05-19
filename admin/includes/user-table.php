@@ -19,6 +19,7 @@ require('../includes/connect_db.php');
                         <th>Email</th>
                         <th>Contact Number</th>
                         <th>License Expiry</th>
+                        <th>License Check Code</th>
                         <th>Status</th>
                         <th>Account Type</th>
                         <th>Actions</th>
@@ -31,6 +32,7 @@ require('../includes/connect_db.php');
                         <th>Email</th>
                         <th>Contact Number</th>
                         <th>License Expiry</th>
+                        <th>License Check Code</th>
                         <th>Status</th>
                         <th>Account Type</th>
                         <th>Actions</th>
@@ -50,6 +52,7 @@ require('../includes/connect_db.php');
                                 <td><?php echo "{$row['email']}"; ?></td>
                                 <td><?php echo "{$row['phone_no']}"; ?></td>
                                 <td><?php echo "{$row['license_expiry']}"; ?></td>
+                                <td><?php echo "{$row['check_code']}"; ?></td>
                                 <td><?php if ($row['account_status'] == "1") {
                                         echo "Blocked";
                                     } else {

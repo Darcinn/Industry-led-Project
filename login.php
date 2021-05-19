@@ -37,7 +37,7 @@ script has been created will simply produce an HTTP404 page Not Found error
 <div class="d-flex justify-content-center">
 	<div class="card text-center flex-even">
 		<div class="card-body">
-			<form action="login_action.php" method="post">
+			<form action="includes/login_action.php" method="post">
 				<div class="row">
 					<div class="col-sm col-md">
 						<input type="text" class="form-control" name="email" placeholder="Email" required>

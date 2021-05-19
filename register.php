@@ -38,6 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $le = mysqli_real_escape_string($link, trim($_POST['license_expiry']));
   }
 
+  # Check for a date of birth.
+  if (empty($_POST['check_code'])) {
+    $errors[] = 'Enter your DVLA Check Code.';
+  } else {
+    $ck = mysqli_real_escape_string($link, trim($_POST['check_code']));
+  }
+
   # Check for a contact number.
   if (empty($_POST['contact_no'])) {
     $errors[] = 'Enter your contact number.';
@@ -72,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   # On success register user inserting into 'users' database table.
   if (empty($errors)) {
-    $q = "INSERT INTO users (forename, surname, email, pass, phone_no, license_expiry) VALUES ('$fn', '$ln', '$e', SHA2('$p',256), '$cn', '$le')";
+    $q = "INSERT INTO users (forename, surname, email, pass, phone_no, license_expiry, check_code) VALUES ('$fn', '$ln', '$e', SHA2('$p',256), '$cn', '$le', '$ck')";
     $r = @mysqli_query($link, $q);
     if ($r) {
       header("Location: index.php");
@@ -118,6 +125,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- Display body section with sticky form. -->
         <form action="register.php" method="post">
           <div class="form-row">
+            <div class="form-group col-md-12">
+              <h4>Account Information</h4>
+            </div>
             <div class="form-group col-md-6">
               <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" size="20" required value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
             </div>
@@ -125,19 +135,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" size="20" required value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
             </div>
             <div class="form-group col-md-6">
-              <input type="date" class="form-control" id="license_expiry" name="license_expiry" size="20" required value="<?php if (isset($_POST['license_expiry'])) echo $_POST['license_expiry']; ?>">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" size="50" required value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
             </div>
             <div class="form-group col-md-6">
               <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Enter Contact Number" size="20" required value="<?php if (isset($_POST['contact_no'])) echo $_POST['contact_no']; ?>">
-            </div>
-            <div class="form-group col-md-12">
-              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" size="50" required value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
             </div>
             <div class="form-group col-md-6">
               <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Create Password" size="20" required value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
             </div>
             <div class="form-group col-md-6">
               <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirm Password" size="20" required value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
+            </div>
+            <div class="form-group col-md-12">
+              <h4>Driving License Information</h3>
+            </div>
+            <div class="form-group col-md-6">
+              <h6>License Expiry Date</h6>
+              <input type="date" class="form-control" id="license_expiry" name="license_expiry" size="20" required value="<?php if (isset($_POST['license_expiry'])) echo $_POST['license_expiry']; ?>">
+            </div>
+            <div class="form-group col-md-6">
+              <h6>DVLA Check Code</h6>
+              <input type="text" class="form-control" id="check_code" name="check_code" placeholder="Enter DVLA Check Code" size="20" required value="<?php if (isset($_POST['check_code'])) echo $_POST['check_code']; ?>">
             </div>
           </div>
       </div>
