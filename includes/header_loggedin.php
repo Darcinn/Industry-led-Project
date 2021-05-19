@@ -49,12 +49,7 @@
         <li class="nav-item">
           <a class="nav-link <?php if ($currentPage == 'movie') {
                                 echo 'active';
-                              } ?>" href="../movies.php">Movies<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?php if ($currentPage == 'tv') {
-                                echo 'active';
-                              } ?>" href="../tv.php">Television</a>
+                              } ?>" href="booking.php">Booking<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
@@ -66,29 +61,29 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
-        <?php
-        if ($_SESSION['account_level'] == "2") {
-        ?>
-          <li class="nav-item <?php if ($currentPage == 'admin') {
-                                echo 'active';
-                              } ?>">
-            <a class="nav-link" href="/admin/admin.php">Admin</a>
-          </li>
-        <?php
-        }
-        ?>
         <li class="nav-item <?php if ($currentPage == 'account') {
                               echo 'active';
                             } ?> ">
-          <a class="nav-link" href="user_login.php">
-            <?php
-            $user = $_SESSION['first_name'];
-            echo "Hi $user";
-            ?>
+          <a class="nav-link" id="userDropdown" href="#" data-toggle="dropdown" aria-expanded="false" aria-controls="userDropdown">
+            <div class="sb-nav-link-icon"> <?php
+                                            $user = $_SESSION['forename'];
+                                            echo "Hi $user";
+                                            ?><em class="fas fa-user fa-fw"></em><em class="fas fa-angle-down"></em></div>
           </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="includes/logout.php">Sign Out</a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="user_login.php">Account</a>
+            <a class="dropdown-item" href="bookings.php">Bookings</a>
+            <?php
+            if ($_SESSION['account_level'] == "2") {
+            ?>
+              <a class="dropdown-item" href="/admin/admin.php">Admin</a>
+            <?php
+            }
+            ?>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="includes/logout.php">Logout</a>
+          </div>
         </li>
       </ul>
     </div>

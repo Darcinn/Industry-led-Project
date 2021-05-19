@@ -266,3 +266,7 @@ header.masthead .post-heading .meta a {
 #index-mast {
   background-image: url('https://wallpaperaccess.com/full/288727.jpg');
 }
+
+.user-table {
+  flex: 1;
+}

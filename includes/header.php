@@ -42,33 +42,34 @@
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark">
-  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link <?php if ($currentPage == 'movie') {echo 'active';} ?>" href="../movies.php">Movies<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?php if ($currentPage == 'tv') {echo 'active';} ?>" href="../tv.php">Television</a>
+          <a class="nav-link <?php if ($currentPage == 'movie') {
+                                echo 'active';
+                              } ?>" href="booking.php">Booking<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
     <div class="mx-auto order-0">
-      <a class="navbar-brand" href="index.php"><img class="logo"style="height: 50px; width: 100px;" src="img/Logo.png" alt="ECinema"></a>
+      <a class="navbar-brand" href="index.php"><img class="logo" style="height: 50px; width: 100px;" src="img/Logo.png" alt="ECinema"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item <?php if ($currentPage == 'login') {
+        <li class="nav-item <?php if ($currentPage == 'account' || $currentPage == 'login' || $currentPage == 'register' || $currentPage == 'forgot_password') {
                               echo 'active';
                             } ?> ">
-          <a class="nav-link" href="login.php">Sign In</a>
-        </li>
-        <li class="nav-item <?php if ($currentPage == 'register') {
-                              echo 'active';
-                            } ?>">
-          <a class="nav-link" href="register.php">Register</a>
+          <a class="nav-link" id="userDropdown" href="#" data-toggle="dropdown" aria-expanded="false" aria-controls="userDropdown">
+            <div class="sb-nav-link-icon"><em class="fas fa-user fa-fw"></em><em class="fas fa-angle-down"></em></div>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="login.php">Login</a>
+            <a class="dropdown-item" href="register.php">Register</a>
+          </div>
         </li>
       </ul>
     </div>

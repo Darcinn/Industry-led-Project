@@ -2,7 +2,7 @@
 
 session_start();
 
-$currentPage = 'login';
+$currentPage = 'forgot_password';
 if(!isset($_SESSION['user_id']) ){
     include('includes/header.php');
 } else {

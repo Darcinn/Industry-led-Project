@@ -14,18 +14,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
 
   $id = $_POST['user_id'];
 
-  if (!empty($_POST['first_name'])) {
-    $fn = trim($_POST['first_name']);
-    $q = "UPDATE users SET first_name='$fn' WHERE user_id='$id'";
+  if (!empty($_POST['forename'])) {
+    $fn = trim($_POST['forename']);
+    $q = "UPDATE users SET forename='$fn' WHERE user_id='$id'";
     $r = @mysqli_query($link, $q);
-    $_SESSION[ 'first_name' ] = $fn;
+    $_SESSION['forename'] = $fn;
   }
 
-  if (!empty($_POST['last_name'])) {
-    $ln = trim($_POST['last_name']);
-    $q = "UPDATE users SET last_name='$ln' WHERE user_id='$id'";
+  if (!empty($_POST['surname'])) {
+    $ln = trim($_POST['surname']);
+    $q = "UPDATE users SET surname='$ln' WHERE user_id='$id'";
     $r = @mysqli_query($link, $q);
-    $_SESSION[ 'last_name' ] = $ln;
+    $_SESSION['surname'] = $ln;
+  }
+
+  if (!empty($_POST['check_code'])) {
+    $ln = trim($_POST['check_code']);
+    $q = "UPDATE users SET check_code='$ln' WHERE user_id='$id'";
+    $r = @mysqli_query($link, $q);
+    $_SESSION['check_code'] = $ln;
+  }
+
+  if (!empty($_POST['license_expiry'])) {
+    $ln = trim($_POST['license_expiry']);
+    $q = "UPDATE users SET license_expiry='$ln' WHERE user_id='$id'";
+    $r = @mysqli_query($link, $q);
+    $_SESSION['license_expiry'] = $ln;
   }
 
   mysqli_close($link);

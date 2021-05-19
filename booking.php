@@ -2,11 +2,13 @@
 
 session_start();
 
-$currentPage = 'index';
-if (isset($_SESSION['user_id'])) {
+$currentPage = 'booking';
+if (isset($_SESSION['user_id']) && $_SESSION['account_status'] == 2) {
   include('includes/header_loggedin.php');
+} else if ($_SESSION['user_id'] == 1) {
+  header("Location: user_account.php");
 } else {
-  include('includes/header.php');
+  header("Location: login.php");
 }
 
 ?>
@@ -17,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h1>Edinburgh College Fleet Management</h1>
+          <h4>Edinburgh College Fleet Management</h4>
           <span class="subheading">Getting you the places you need to go, when you need to get there.</span>
         </div>
       </div>

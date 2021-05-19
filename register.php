@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="form-group col-md-6">
               <h6>License Expiry Date</h6>
-              <input type="date" class="form-control" id="license_expiry" name="license_expiry" size="20" required value="<?php if (isset($_POST['license_expiry'])) echo $_POST['license_expiry']; ?>">
+              <input type="date" min="<?php echo date('Y-m-d'); ?>" class="form-control" id="datefield" name="license_expiry" size="20" required value="<?php if (isset($_POST['license_expiry'])) echo $_POST['license_expiry']; ?>">
             </div>
             <div class="form-group col-md-6">
               <h6>DVLA Check Code</h6>

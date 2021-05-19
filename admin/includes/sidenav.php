@@ -17,13 +17,13 @@
                     Users
                 </a>
 
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                    <div class="sb-nav-link-icon"><em class="fas fa-book-open"></em></div>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFleet" aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><em class="fas fa-car"></em></div>
                     Fleet Management
                     <div class="sb-sidenav-collapse-arrow"><em class="fas fa-angle-down"></em></div>
                 </a>
 
-                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseFleet" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
                         <a class="nav-link" href="campus.php">
@@ -37,17 +37,46 @@
                     </nav>
                 </div>
 
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBooking" aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><em class="fas fa-calendar"></em></div>
+                    Booking Management
+                    <div class="sb-sidenav-collapse-arrow"><em class="fas fa-angle-down"></em></div>
+                </a>
+
+                <div class="collapse" id="collapseBooking" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+
+                        <a class="nav-link" href="campus.php">
+                            Calendar
+                        </a>
+
+                        <a class="nav-link" href="vehicle.php">
+                            Current Bookings
+                        </a>
+
+                    </nav>
+                </div>
+
+                <div class="sb-sidenav-menu-heading">Logs</div>
+                <a class="nav-link" href="users.php">
+                    <div class="sb-nav-link-icon"><em class="fas fa-search"></em></div>
+                    Vehicle Check Sheets
+                </a>
+                <a class="nav-link" href="users.php">
+                    <div class="sb-nav-link-icon"><em class="fas fa-map-marker"></em></div>
+                    Trip Logs
+                </a>
 
                 <div class="sb-sidenav-menu-heading">Analytics</div>
 
                 <a class="nav-link" href="subscribers.php">
                     <div class="sb-nav-link-icon"><em class="fas fa-chart-area"></em></div>
-                    Subscribers
+                    Users
                 </a>
 
                 <a class="nav-link" href="sessions.php">
                     <div class="sb-nav-link-icon"><em class="fas fa-table"></em></div>
-                    Sessions
+                    Vehicles
                 </a>
 
             </div>

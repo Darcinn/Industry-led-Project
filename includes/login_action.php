@@ -24,6 +24,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
     $_SESSION[ 'pass' ] = $data[ 'pass' ] ;
     $_SESSION[ 'phone_no' ] = $data[ 'phone_no' ] ;
     $_SESSION[ 'license_expiry' ] = $data[ 'license_expiry' ] ;
+    $_SESSION[ 'check_code' ] = $data[ 'check_code' ] ;   
     $_SESSION[ 'account_level' ] = $data[ 'account_level' ] ;
     $_SESSION[ 'account_status' ] = $data[ 'account_status' ] ;
     load ( '../user_login.php' ) ;
