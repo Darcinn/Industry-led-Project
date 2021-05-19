@@ -47,12 +47,15 @@ require('../includes/connect_db.php');
                             <tr>
                                 <td><?php echo "{$row['vehicle_id']}"; ?></td>
                                 <td><?php echo "{$row['vehicle_reg']}"; ?></td>
-                                <td><?php       
-                                
-                                $cam = $coc['campus_id'];
-                                $cok = mysqli_query($link, "SELECT campus_name FROM campus WHERE campus_id = '$cam'");
+                                <td>
+                                    <?php
+                                    $q = "SELECT * FROM campus WHERE campus_id = '{$row['campus_id']}'";
+                                    $r = mysqli_query($link, $q);
+                                    $cam = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
-                                echo "{$row['campus_id']}"; ?></td>
+                                    echo "{$cam['campus_name']}";
+                                    ?>
+                                </td>
                                 <td><?php echo "{$row['vehicle_make']}"; ?></td>
                                 <td><?php echo "{$row['vehicle_model']}"; ?></td>
                                 <td><?php echo "{$row['vehicle_colour']}"; ?></td>
@@ -109,8 +112,8 @@ require('../includes/connect_db.php');
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" name="vehicle_make" class="form-control" placeholder="<?php echo "{$row['vehicle_make']}"; ?>" value="<?php if (isset($_POST['vehicle_make'])) {
-                                                                                                                                                                                    echo $_POST['vehicle_make'];
-                                                                                                                                                                                } ?>">
+                                                                                                                                                                                        echo $_POST['vehicle_make'];
+                                                                                                                                                                                    } ?>">
 
                                                     </div>
                                                     <div class="form-group">
@@ -121,8 +124,8 @@ require('../includes/connect_db.php');
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" name="vehicle_colour" class="form-control" placeholder="<?php echo "{$row['vehicle_colour']}"; ?>" value="<?php if (isset($_POST['vehicle_colour'])) {
-                                                                                                                                                                                        echo $_POST['vehicle_colour'];
-                                                                                                                                                                                    } ?>">
+                                                                                                                                                                                            echo $_POST['vehicle_colour'];
+                                                                                                                                                                                        } ?>">
 
                                                     </div>
                                                     <div class="form-group">
