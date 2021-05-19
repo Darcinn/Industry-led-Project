@@ -8,29 +8,17 @@
       <div class="col-6 col-md text-white">
         <h5>Navigation</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="tv.php">TV</a></li>
-          <li><a class="text-muted" href="movies.php">Movies</a></li>
+          <li><a class="text-muted" href="bookings.php">Bookings</a></li>
         </ul>
       </div>
       <div class="col-6 col-md text-white">
         <h5>Account</h5>
         <ul class="list-unstyled text-small">
-          <?php if (isset($_SESSION['first_name'])) : ?>
+          <?php if (isset($_SESSION['user_id'])) : ?>
             <li><a class="text-muted" href="user_login.php">My Account</a></li>
           <?php else : ?>
-            <li><a class="text-muted" href="" rel="nofollow" data-mdb-toggle="modal" data-mdb-target="#signupModal">My Account</a></li>
+            <li><a class="text-muted" href="/login.php">My Account</a></li>
           <?php endif ?>
-        </ul>
-      </div>
-      <div class="col-6 col-md text-white">
-        <h5>Contact us</h5>
-        <ul class="list-unstyled text-small">
-          <li>
-            <p class="text-muted" href="">Call: 0141 444 3333</p>
-          </li>
-          <li>
-            <p class="text-muted" href="">Email: WebFlix@TotallyNotARipOff.scam</p>
-          </li>
         </ul>
       </div>
       <div class="col-6 col-md text-white">
