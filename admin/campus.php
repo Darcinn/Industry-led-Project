@@ -26,7 +26,7 @@ if ($_SESSION['account_level'] == "2") {
                 </ol>
                 <div class="card mb-4">
                     <div class="card-body">
-                        Some text here about the campus page.
+                        This page displays all campuses for the Edinburgh College Fleet.
                     </div>
                 </div>
                 <?php

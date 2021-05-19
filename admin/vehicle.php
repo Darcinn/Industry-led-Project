@@ -22,7 +22,7 @@ if ($_SESSION['account_level'] == "2") {
                 <h1 class="mt-4">Vehicles</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="admin.php">Dashboard</a></li>
-                    <li class="breadcrumb-item">Content</li>
+                    <li class="breadcrumb-item">Fleet Management</li>
                     <li class="breadcrumb-item active">Vehicles</li>
                 </ol>
                 <div class="card mb-4">
