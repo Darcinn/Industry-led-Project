@@ -26,16 +26,12 @@
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
-                        <a class="nav-link" href="genres.php">
-                            Genres
+                        <a class="nav-link" href="campus.php">
+                            Campus
                         </a>
 
-                        <a class="nav-link" href="movies.php">
-                            Movies
-                        </a>
-
-                        <a class="nav-link" href="tv.php">
-                            TV
+                        <a class="nav-link" href="vehicle.php">
+                            Vehicles
                         </a>
 
                     </nav>

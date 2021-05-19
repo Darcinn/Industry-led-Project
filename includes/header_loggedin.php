@@ -67,7 +67,7 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
         <?php
-        if ($_SESSION['account_type'] == "2") {
+        if ($_SESSION['account_level'] == "2") {
         ?>
           <li class="nav-item <?php if ($currentPage == 'admin') {
                                 echo 'active';

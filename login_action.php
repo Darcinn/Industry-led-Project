@@ -23,7 +23,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
     $_SESSION[ 'email' ] = $data[ 'email' ] ;
     $_SESSION[ 'pass' ] = $data[ 'pass' ] ;
     $_SESSION[ 'subscribed' ] = $data[ 'subscribed' ] ;
-    $_SESSION[ 'account_type' ] = $data[ 'account_type' ] ;
+    $_SESSION[ 'account_level' ] = $data[ 'account_level' ] ;
     load ( 'user_login.php' ) ;
   }
   # Or on failure set errors.

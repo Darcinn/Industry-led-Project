@@ -32,10 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   # Check for a date of birth.
-  if (empty($_POST['date_of_birth'])) {
-    $errors[] = 'Enter your date of birth.';
+  if (empty($_POST['license_expiry'])) {
+    $errors[] = 'Enter your license expiry date.';
   } else {
-    $db = mysqli_real_escape_string($link, trim($_POST['date_of_birth']));
+    $le = mysqli_real_escape_string($link, trim($_POST['license_expiry']));
   }
 
   # Check for a contact number.
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   # On success register user inserting into 'users' database table.
   if (empty($errors)) {
-    $q = "INSERT INTO users (first_name, last_name, email, date_of_birth, contact_no, pass, reg_date) VALUES ('$fn', '$ln', '$e', '$db', '$cn', SHA2('$p',256), NOW() )";
+    $q = "INSERT INTO users (forename, surname, email, pass, phone_no, license_expiry) VALUES ('$fn', '$ln', '$e', SHA2('$p',256), '$cn', '$le')";
     $r = @mysqli_query($link, $q);
     if ($r) {
       header("Location: index.php");
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" size="20" required value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
             </div>
             <div class="form-group col-md-6">
-              <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Enter D.O.B (DD/MM/YYYY)" size="20" required value="<?php if (isset($_POST['date_of_birth'])) echo $_POST['date_of_birth']; ?>">
+              <input type="date" class="form-control" id="license_expiry" name="license_expiry" size="20" required value="<?php if (isset($_POST['license_expiry'])) echo $_POST['license_expiry']; ?>">
             </div>
             <div class="form-group col-md-6">
               <input type="text" class="form-control" id="contact_no" name="contact_no" placeholder="Enter Contact Number" size="20" required value="<?php if (isset($_POST['contact_no'])) echo $_POST['contact_no']; ?>">
