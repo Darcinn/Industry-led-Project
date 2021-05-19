@@ -35,18 +35,18 @@ require('../includes/connect_db.php');
                 <tbody>
 
                     <?php
-                    $g = "SELECT * FROM tv";
+                    $g = "SELECT * FROM vehicle";
                     $n = mysqli_query($link, $g);
                     if (mysqli_num_rows($n) > 0) {
                         while ($row = mysqli_fetch_array($n, MYSQLI_ASSOC)) {
-                            $t = mysqli_query($link, "SELECT COUNT(*) FROM episode WHERE tv_id = '{$row['tv_id']}'");
-                            $tot = mysqli_fetch_array($t)
                     ?>
                             <tr>
-                                <td><?php echo "{$row['tv_id']}"; ?></td>
-                                <td><?php echo "{$row['tv_title']}"; ?></td>
-                                <td><?php echo "{$row['tv_genre']}"; ?></td>
-                                <td><?php echo $tot[0]; ?></td>
+                                <td><?php echo "{$row['vehicle_id']}"; ?></td>
+                                <td><?php echo "{$row['campus_id']}"; ?></td>
+                                <td><?php echo "{$row['vehicle_make']}"; ?></td>
+                                <td><?php echo "{$row['vehicle_model']}"; ?></td>
+                                <td><?php echo "{$row['vehicle_colour']}"; ?></td>
+                                <td><?php echo "{$row['status']}"; ?></td>
                                 <td>
                                     <div class="row">
                                         <a href="#editSeriesModal<?php echo "{$row['tv_id']}"; ?>" data-toggle="modal" style="text-decoration:none; color:inherit;"><button class="btn"><em class="fa fa-edit"></em> Edit</a></button>
