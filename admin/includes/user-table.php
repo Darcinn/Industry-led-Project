@@ -17,8 +17,8 @@ require('../includes/connect_db.php');
                         <th>Forename</th>
                         <th>Surname</th>
                         <th>Email</th>
-                        <th>D.O.B</th>
                         <th>Contact Number</th>
+                        <th>License Expiry</th>
                         <th>Status</th>
                         <th>Account Type</th>
                         <th>Actions</th>
@@ -29,8 +29,8 @@ require('../includes/connect_db.php');
                         <th>Forename</th>
                         <th>Surname</th>
                         <th>Email</th>
-                        <th>D.O.B</th>
                         <th>Contact Number</th>
+                        <th>License Expiry</th>
                         <th>Status</th>
                         <th>Account Type</th>
                         <th>Actions</th>
@@ -45,24 +45,24 @@ require('../includes/connect_db.php');
                         while ($row = mysqli_fetch_array($n, MYSQLI_ASSOC)) {
                     ?>
                             <tr>
-                                <td><?php echo "{$row['first_name']}"; ?></td>
-                                <td><?php echo "{$row['last_name']}"; ?></td>
+                                <td><?php echo "{$row['forename']}"; ?></td>
+                                <td><?php echo "{$row['surname']}"; ?></td>
                                 <td><?php echo "{$row['email']}"; ?></td>
-                                <td><?php echo "{$row['date_of_birth']}"; ?></td>
-                                <td><?php echo "{$row['contact_no']}"; ?></td>
-                                <td><?php if ($row['subscribed'] == "1") {
-                                        echo "Subscribed";
+                                <td><?php echo "{$row['phone_no']}"; ?></td>
+                                <td><?php echo "{$row['license_expiry']}"; ?></td>
+                                <td><?php if ($row['account_status'] == "1") {
+                                        echo "Active";
                                     } else {
-                                        echo "Free Account";
+                                        echo "Blocked";
                                     } ?></td>
-                                <td><?php if ($row['account_type'] == "2") {
+                                <td><?php if ($row['account_level'] == "2") {
                                         echo "Admin";
                                     } else {
                                         echo "User";
                                     } ?></td>
                                 <td>
                                     <div class="row"><a href="#editModal<?php echo "{$row['user_id']}"; ?>" data-toggle="modal" style="text-decorations:none; color:inherit;"><button class="btn"><em class="fa fa-edit"></em> Edit</a></button>
-                                        
+
                                         <form action="includes/delete.php" method="post">
                                             <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
                                             <button type="submit" name="btnDeleteUsr" class="btn" value=""><em class="fa fa-trash"></em> Delete</button>
@@ -83,13 +83,13 @@ require('../includes/connect_db.php');
                                                 <form action="includes/edit.php" method="post">
                                                     <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
                                                     <div class="form-group">
-                                                        <input type="text" name="first_name" class="form-control" placeholder="<?php echo "{$row['first_name']}"; ?>" value="<?php if (isset($_POST['first_name'])) {
-                                                                                                                                                                                    echo $_POST['first_name'];
-                                                                                                                                                                                } ?>">
+                                                        <input type="text" name="first_name" class="form-control" placeholder="<?php echo "{$row['forename']}"; ?>" value="<?php if (isset($_POST['first_name'])) {
+                                                                                                                                                                                echo $_POST['first_name'];
+                                                                                                                                                                            } ?>">
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" name="last_name" class="form-control" placeholder="<?php echo "{$row['last_name']}"; ?>" value="<?php if (isset($_POST['last_name'])) {
+                                                        <input type="text" name="last_name" class="form-control" placeholder="<?php echo "{$row['surname']}"; ?>" value="<?php if (isset($_POST['last_name'])) {
                                                                                                                                                                                 echo $_POST['last_name'];
                                                                                                                                                                             } ?>">
 
@@ -107,8 +107,8 @@ require('../includes/connect_db.php');
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" name="contact_no" class="form-control" placeholder="<?php echo "{$row['contact_no']}"; ?>" value="<?php if (isset($_POST['contact_no'])) {
-                                                                                                                                                                                    echo $_POST['contact_no'];
+                                                        <input type="text" name="phone_no" class="form-control" placeholder="<?php echo "{$row['phone_no']}"; ?>" value="<?php if (isset($_POST['phone_no'])) {
+                                                                                                                                                                                    echo $_POST['phone_no'];
                                                                                                                                                                                 } ?>">
 
                                                     </div>
