@@ -7,7 +7,7 @@
  4. root is the server username, usbw is the password and site_db is the database name.
 */
 
-$link = mysqli_connect('localhost','mike','ssaTtu91!','gradedunit');
+$link = mysqli_connect('localhost','mike','ssaTtu91!','carbooking');
 # 5. If  username,password and database are correct 'connecton ok' will be dispalyed on screen.
 if (!$link) {
 # 6. Otherwise fail gracefully and explain the error.
