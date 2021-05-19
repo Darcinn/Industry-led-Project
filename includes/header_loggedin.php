@@ -82,7 +82,7 @@
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="user_login.php">Account</a>
-            <a class="dropdown-item" href="bookings.php">Bookings</a>
+            <a class="dropdown-item" href="booking.php">Bookings</a>
             <?php
             if ($_SESSION['account_level'] == "2") {
             ?>

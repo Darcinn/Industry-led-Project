@@ -69,6 +69,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['vehicle_id'])) {
   header("Refresh:0; url=../vehicle.php");
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_id'])) {
+
+  $errors = array();
+
+  $id = $_POST['post_id'];
+
+  # On success new password into 'users' database table.
+  if (!empty($_POST['post_id'])) {
+
+    $q = "DELETE FROM news WHERE post_id='$id'";
+    $r = @mysqli_query($link, $q);
+
+  }
+
+  foreach ($errors as $msg) {
+    alert($msg);
+  }
+
+  header("Refresh:0; url=../news.php");
+}
 
 
 function alert($msg)

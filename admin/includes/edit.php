@@ -183,6 +183,66 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['new_vehicle'])) {
   header("Refresh:0; url=../vehicle.php");
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_id'])) {
+
+  $db;
+
+  $errors = array();
+
+  $id = $_POST['post_id'];
+
+  if (!empty($_POST['post_title'])) {
+    $pt = trim($_POST['post_title']);
+    $q = "UPDATE news SET post_title='$pt' WHERE post_id='$id'";
+    $r = @mysqli_query($link, $q);
+  }
+
+  if (!empty($_POST['post_content'])) {
+    $pc = trim($_POST['post_content']);
+    $q = "UPDATE news SET post_content='$pc' WHERE post_id='$id'";
+    $r = @mysqli_query($link, $q);
+  }
+
+  mysqli_close($link);
+
+  foreach ($errors as $msg) {
+    alert($msg);
+  }
+
+  header("Refresh:0; url=../news.php");
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['new_post'])) {
+
+  $db;
+
+  $errors = array();
+
+  if (!empty($_POST['new_post'])) {
+
+    $pt = trim($_POST['new_post']);
+    $pc = trim($_POST['post_content']);
+    $date = date("jS \of F\, Y");
+
+    $q = "SELECT * FROM news WHERE post_title='$pt'";
+    $r = @mysqli_query($link, $q);
+
+    if (mysqli_num_rows($r) == 0) {
+      $q = "INSERT INTO news (post_date, post_title, post_content) VALUES ('$date', '$pt', '$pc')";
+      $r = @mysqli_query($link, $q);
+    } else {
+      $errors[] = "This post already exists.";
+    }
+  }
+
+  mysqli_close($link);
+
+  foreach ($errors as $msg) {
+    alert($msg);
+  }
+
+  header("Refresh:0; url=../news.php");
+}
 
 function alert($msg)
 {

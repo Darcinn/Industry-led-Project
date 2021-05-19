@@ -9,11 +9,16 @@
                     <div class="sb-nav-link-icon"><em class="fas fa-tachometer-alt"></em></div>
                     Dashboard
                 </a>
+            
+                <a class="nav-link" href="news.php">
+                    <div class="sb-nav-link-icon"><em class="fas fa-newspaper"></em></div>
+                    News
+                </a>
 
 
                 <div class="sb-sidenav-menu-heading">Management</div>
                 <a class="nav-link" href="users.php">
-                    <div class="sb-nav-link-icon"><em class="fas fa-book-open"></em></div>
+                    <div class="sb-nav-link-icon"><em class="fas fa-user"></em></div>
                     Users
                 </a>
 

@@ -66,10 +66,7 @@ html, body {
 
 .footer {
   margin-top: auto;
-}
-
-footer {
-  padding: 20px 20px 0px 20px;
+  padding: 10px 10px 0px 10px;
 }
 
 .light-text {
@@ -183,4 +180,30 @@ header.masthead .post-heading .meta a {
 
 .user-table {
   flex: 1;
+}
+
+.blog-header {
+  line-height: 1;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-header-logo {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+.blog-post {
+  margin-bottom: 4rem;
+}
+.blog-post-title {
+  margin-bottom: .25rem;
+  font-size: 2.5rem;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #727272;
 }
