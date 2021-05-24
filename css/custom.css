@@ -75,7 +75,7 @@ html, body {
 }
 
 .jumbotron{
-  background: url("https://wallpaperaccess.com/full/288727.jpg") no-repeat center center; 
+  background: url('https://i.imgur.com/4dj9M87.jpg'); no-repeat center center; 
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -o-background-size: 100% 100%;
@@ -175,7 +175,7 @@ header.masthead .post-heading .meta a {
 }
 
 #index-mast {
-  background-image: url('https://wallpaperaccess.com/full/288727.jpg');
+  background-image: url('https://i.imgur.com/4dj9M87.jpg');
 }
 
 .user-table {

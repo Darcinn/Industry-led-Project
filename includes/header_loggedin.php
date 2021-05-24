@@ -56,14 +56,14 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link <?php if ($currentPage == 'movie') {
+          <a class="nav-link <?php if ($currentPage == 'booking') {
                                 echo 'active';
                               } ?>" href="booking.php">Booking<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
     <div class="mx-auto order-0">
-      <a class="navbar-brand" href="index.php"><img class="logo" style="height: 50px; width: 100px;" src="img/logo.png" alt="Edinburgh College"></a>
+      <a class="navbar-brand" href="index.php"><img class="logo" style="height: 50px; width: 100px;" src="img/Logo.png" alt="Edinburgh College"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
         <span class="navbar-toggler-icon"></span>
       </button>

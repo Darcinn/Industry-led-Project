@@ -11,13 +11,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['account_status'] == 2) {
   header("Location: login.php");
 }
 
+include('includes/booking-table.php');
+
 ?>
 
-<div class="container">
-
-  <div id='calendar'></div>
-
-</div>
 
 <?php
 
