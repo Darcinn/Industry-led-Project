@@ -106,8 +106,7 @@ require('includes/connect_db.php');
 
                     </div>
                     <div class="form-group">
-                        <input type="datetime-local" name="booking_time" step="3600" class="form-control" min="<?php echo date('Y-m-d\TH:00'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH'); ?>" required>
-
+                        <input type="datetime-local" name="booking_time" class="form-control" min="<?php echo date('Y-m-d\TH:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
                     </div>
                     <div class="modal-footer">
                         <div class="form-group">
