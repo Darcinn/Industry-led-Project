@@ -12,6 +12,7 @@ if (isset($_SESSION['user_id'])) {
 require('includes/connect_db.php');
 ?>
 
+<?php if ($_SESSION['account_status'] == "2" && isset($_SESSION['forename'])) : ?>
 <header class="masthead light-text" id="index-mast">
   <div class="overlay"></div>
   <div class="container">
@@ -19,11 +20,28 @@ require('includes/connect_db.php');
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
           <h2>Edinburgh College Fleet Booking</h2>
+          <button type="button" class="btn btn-secondary">Book A Car!</button>
         </div>
       </div>
     </div>
   </div>
 </header>
+<?php else : ?>
+  <header class="masthead light-text" id="index-mast">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h2>Edinburgh College Fleet Booking</h2>
+          <button type="button" class="btn btn-secondary">Register</button>
+          <button type="button" class="btn btn-secondary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<?php endif ?>
 
   <div class="container col-md-6">
 
