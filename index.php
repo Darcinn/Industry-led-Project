@@ -20,7 +20,7 @@ require('includes/connect_db.php');
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
           <h2>Edinburgh College Fleet Booking</h2>
-          <button type="button" class="btn btn-secondary">Book A Car!</button>
+          <a href="booking.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Book A Car!</a>
         </div>
       </div>
     </div>
@@ -34,8 +34,8 @@ require('includes/connect_db.php');
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
           <h2>Edinburgh College Fleet Booking</h2>
-          <button type="button" class="btn btn-secondary">Register</button>
-          <button type="button" class="btn btn-secondary">Login</button>
+          <a href="register.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Register</a>
+          <a href="login.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Login</a>
         </div>
       </div>
     </div>
