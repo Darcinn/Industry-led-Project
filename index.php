@@ -52,7 +52,7 @@ require('includes/connect_db.php');
   <div class="row d-flex justify-content-center mx-auto">
 
     <?php
-    $q = "SELECT * FROM news order by post_date  desc LIMIT 6";
+    $q = "SELECT * FROM news order by post_id desc LIMIT 6";
     $r = mysqli_query($link, $q);
     if (mysqli_num_rows($r) > 0) {
         while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {

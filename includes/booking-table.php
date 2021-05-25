@@ -9,6 +9,48 @@ require('includes/connect_db.php');
         <i class="fas fa-table mr-1"></i>
         Your Bookings
     </div>
+    <div class="d-flex flex-row">
+        <?php
+        $c = "SELECT * FROM booking WHERE user_id='{$_SESSION['user_id']}' AND booking_check IS NULL";
+        $u = mysqli_query($link, $c);
+        if (mysqli_num_rows($u) > 0) {
+            while ($row = mysqli_fetch_array($u, MYSQLI_ASSOC)) {
+        ?>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Check Sheet</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#newCheckModal<?php echo "{$row['booking_id']}"; ?>">Add Check Sheet</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
+    </div>
+    <div class="d-flex flex-row">
+        <?php
+        $c = "SELECT * FROM booking WHERE user_id='{$_SESSION['user_id']}' AND booking_log IS NULL";
+        $u = mysqli_query($link, $c);
+        if (mysqli_num_rows($u) > 0) {
+            while ($row = mysqli_fetch_array($u, MYSQLI_ASSOC)) {
+        ?>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Log Sheet</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#newLogModal<?php echo "{$row['booking_id']}"; ?>">Add Log Sheet</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
+    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
