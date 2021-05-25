@@ -13,70 +13,78 @@ require('includes/connect_db.php');
 ?>
 
 <?php if ($_SESSION['account_status'] == "2" && isset($_SESSION['forename'])) : ?>
-<header class="masthead light-text" id="index-mast">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h2>Edinburgh College Fleet Booking</h2>
-          <a href="booking.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Book A Car!</a>
+  <header class="masthead light-text" id="index-mast">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h2>Edinburgh College Fleet Booking</h2>
+            <a href="booking.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Book A Car!</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 <?php else : ?>
   <header class="masthead light-text" id="index-mast">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h2>Edinburgh College Fleet Booking</h2>
-          <a href="register.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Register</a>
-          <a href="login.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Login</a>
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h2>Edinburgh College Fleet Master</h2>
+            <a href="register.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Register</a>
+            <a href="login.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Login</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 <?php endif ?>
 
-  <div class="container col-md-6">
+<div class="d-flex justify-content-center">
+  <h2>Fleet Master News</h2>
+</div>
+
+	<!--News Cards-->
+<div class="d-flex justify-content-center">
+  <div class="row d-flex justify-content-center">
 
     <?php
+    $q = "SELECT * FROM news";
+    $r = mysqli_query($link, $q);
+    if (mysqli_num_rows($r) > 0) {
 
-    $g = "SELECT * FROM news";
-    $n = mysqli_query($link, $g);
-    if (mysqli_num_rows($n) > 0) {
-      while ($row = mysqli_fetch_array($n, MYSQLI_ASSOC)) {
+      while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+        $short = substr($row['post_content'], 0, 197) . "...";  // returns "abcde"
     ?>
-
-        <div class="section">
-          <article class="blog-post">
-            <br>
-            <h2 class="blog-post-title"><?php echo "{$row['post_title']}"; ?></h2>
-            <p class="blog-post-meta"><?php echo "{$row['post_date']}"; ?></p>
-
-            <p><?php echo "{$row['post_content']}"; ?></p>
-
-          </article>
-
-          <hr class="featurette-divider bg-dark">
+        <div class="card" style="width: 33rem; margin:1rem;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"><?php echo "{$row['post_title']}"; ?></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><?php echo "{$row['post_date']}"; ?></h6>
+            <p class="card-text"><?php echo "$short"; ?></p>
+            <div class="card-footer bg-transparent mt-auto">
+              <a href="#" class="card-link">Read Full Article</a>
+            </div>
+          </div>
         </div>
+
     <?php
       }
-      mysqli_close($link);
     }
-
+    # Or display message.
+    else {
+      echo '<p>There are currently no news posts</p>';
+    }
     ?>
 
   </div>
+</div>
 
-  <?php
+<?php
 
-  include('includes/footer.php');
+include('includes/footer.php');
 
 
-  ?>
+?>
