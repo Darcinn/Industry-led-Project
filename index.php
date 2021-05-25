@@ -65,7 +65,7 @@ require('includes/connect_db.php');
             <h6 class="card-subtitle mb-2 text-muted"><?php echo "{$row['post_date']}"; ?></h6>
             <p class="card-text"><?php echo "$short"; ?></p>
             <div class="card-footer bg-transparent mt-auto">
-              <a href="#" class="card-link">Read Full Article</a>
+              <a href="added.php?id=<?php echo "{$row['post_id']}"; ?>" class="card-link">Read Full Article</a>
             </div>
           </div>
         </div>
