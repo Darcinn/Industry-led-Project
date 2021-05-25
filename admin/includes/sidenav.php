@@ -55,7 +55,7 @@
                             Calendar
                         </a>
 
-                        <a class="nav-link" href="bookings.php">
+                        <a class="nav-link" href="booking.php">
                             Current Bookings
                         </a>
 

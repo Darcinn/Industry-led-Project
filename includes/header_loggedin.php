@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="admin/css/styles.css">
   <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="css/calendar.css">
+  <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
   <!--mystylesheet-->

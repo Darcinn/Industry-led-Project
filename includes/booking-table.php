@@ -11,7 +11,7 @@ require('includes/connect_db.php');
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="vehicleTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Booking ID</th>
@@ -67,7 +67,7 @@ require('includes/connect_db.php');
                                 <td>
                                     <div class="row">
                                         <form action="includes/delete.php" method="post">
-                                            <input type="hidden" id="vehicleID" name="vehicle_id" value="<?php echo "{$row['vehicle_id']}"; ?>">
+                                            <input type="hidden" id="bookingID" name="booking_id" value="<?php echo "{$row['booking_id']}"; ?>">
                                             <button type="submit" name="btnDeleteUsr" class="btn" value=""><em class="fa fa-trash"></em> Delete</button>
                                         </form>
                                     </div>
@@ -99,6 +99,7 @@ require('includes/connect_db.php');
             </div>
             <div class="modal-body">
                 <form action="includes/edit.php" method="post">
+                    <input type="hidden" id="userId" name="booked_user" value="<?php echo "{$_SESSION['user_id']}"; ?>">
                     <div class="form-group">
                         <input type="text" name="booking_destination" class="form-control" placeholder="Destination" value="<?php if (isset($_POST['booking_destination'])) {
                                                                                                                                 echo $_POST['booking_destination'];
@@ -106,7 +107,50 @@ require('includes/connect_db.php');
 
                     </div>
                     <div class="form-group">
+                        <h6>Booking Start Time</h6>
                         <input type="datetime-local" name="booking_time" class="form-control" min="<?php echo date('Y-m-d\TH:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <h6>Booking Return Time</h6>
+                        <input type="datetime-local" name="booking_return" class="form-control" min="<?php echo date('Y-m-d\TH:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="vehicle_id" class="form-control">
+                            <option value="" selected disabled hidden>Available Vehicles</option>
+
+                            <?php
+
+                            /*$f = "SELECT * FROM booking WHERE booking_date>='{$_POST['booking_time']}' AND booking_return<'{$_POST['booking_return']}'";*/
+                            $f = "SELECT * FROM vehicle";
+                            $a = mysqli_query($link, $f);
+                            if (mysqli_num_rows($a) > 0) {
+                                while ($coc = mysqli_fetch_array($a, MYSQLI_ASSOC)) {
+
+                            ?>
+                                    <option value="<?php echo "{$coc['vehicle_id']}"; ?>"><?php echo "{$coc['vehicle_model']}"; ?></option>
+                            <?php
+                                }
+                            }
+
+                            ?>
+
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" cols="60" name="booking_purpose" placeholder="Booking Purpose"><?php if (isset($row['booking_purpose'])) {
+                                                                                                                                    echo $row['booking_purpose'];
+                                                                                                                                } ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <select name="booking_passengers" class="form-control">
+                            <option value="" selected disabled hidden>Passengers</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <div class="form-group">

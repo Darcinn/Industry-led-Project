@@ -13,12 +13,4 @@ if (isset($_SESSION['user_id']) && $_SESSION['account_status'] == 2) {
 
 include('includes/booking-table.php');
 
-?>
-
-
-<?php
-
 include('includes/footer.php');
-
-
-?>
