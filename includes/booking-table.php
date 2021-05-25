@@ -9,6 +9,48 @@ require('includes/connect_db.php');
         <i class="fas fa-table mr-1"></i>
         Your Bookings
     </div>
+    <div class="d-flex flex-row">
+        <?php
+        $c = "SELECT * FROM booking WHERE user_id='{$_SESSION['user_id']}' AND booking_check IS NULL";
+        $u = mysqli_query($link, $c);
+        if (mysqli_num_rows($u) > 0) {
+            while ($row = mysqli_fetch_array($u, MYSQLI_ASSOC)) {
+        ?>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Check Sheet</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#newCheckModal<?php echo "{$row['booking_id']}"; ?>">Add Check Sheet</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
+    </div>
+    <div class="d-flex flex-row">
+        <?php
+        $c = "SELECT * FROM booking WHERE user_id='{$_SESSION['user_id']}' AND booking_log IS NULL";
+        $u = mysqli_query($link, $c);
+        if (mysqli_num_rows($u) > 0) {
+            while ($row = mysqli_fetch_array($u, MYSQLI_ASSOC)) {
+        ?>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Log Sheet</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#newLogModal<?php echo "{$row['booking_id']}"; ?>">Add Log Sheet</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
+    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -101,6 +143,28 @@ require('includes/connect_db.php');
                 <form action="includes/edit.php" method="post">
                     <input type="hidden" id="userId" name="booked_user" value="<?php echo "{$_SESSION['user_id']}"; ?>">
                     <div class="form-group">
+                        <div class="form-group">
+                            <select name="campus_id" class="form-control">
+                                <option value="" selected disabled hidden>Choose Current Campus</option>
+
+                                <?php
+
+                                $f = "SELECT * FROM campus";
+                                $a = mysqli_query($link, $f);
+                                if (mysqli_num_rows($a) > 0) {
+                                    while ($coc = mysqli_fetch_array($a, MYSQLI_ASSOC)) {
+
+                                ?>
+                                        <option value="<?php echo "{$coc['campus_id']}"; ?>"><?php echo "{$coc['campus_name']}"; ?></option>
+                                <?php
+                                    }
+                                }
+
+                                ?>
+
+                            </select>
+
+                        </div>
                         <input type="text" name="booking_destination" class="form-control" placeholder="Destination" value="<?php if (isset($_POST['booking_destination'])) {
                                                                                                                                 echo $_POST['booking_destination'];
                                                                                                                             } ?>" required>
@@ -108,34 +172,11 @@ require('includes/connect_db.php');
                     </div>
                     <div class="form-group">
                         <h6>Booking Start Time</h6>
-                        <input type="datetime-local" name="booking_time" class="form-control" min="<?php echo date('Y-m-d\TH:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
+                        <input type="datetime-local" name="booking_time" class="form-control" min="<?php echo date('Y-m-d H:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d H:i'); ?>" required>
                     </div>
                     <div class="form-group">
                         <h6>Booking Return Time</h6>
-                        <input type="datetime-local" name="booking_return" class="form-control" min="<?php echo date('Y-m-d\TH:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <select name="vehicle_id" class="form-control">
-                            <option value="" selected disabled hidden>Available Vehicles</option>
-
-                            <?php
-
-                            /*$f = "SELECT * FROM booking WHERE booking_date>='{$_POST['booking_time']}' AND booking_return<'{$_POST['booking_return']}'";*/
-                            $f = "SELECT * FROM vehicle";
-                            $a = mysqli_query($link, $f);
-                            if (mysqli_num_rows($a) > 0) {
-                                while ($coc = mysqli_fetch_array($a, MYSQLI_ASSOC)) {
-
-                            ?>
-                                    <option value="<?php echo "{$coc['vehicle_id']}"; ?>"><?php echo "{$coc['vehicle_model']}"; ?></option>
-                            <?php
-                                }
-                            }
-
-                            ?>
-
-                        </select>
-
+                        <input type="datetime-local" name="booking_return" class="form-control" min="<?php echo date('Y-m-d H:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d  H:i'); ?>" required>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="5" cols="60" name="booking_purpose" placeholder="Booking Purpose"><?php if (isset($row['booking_purpose'])) {
