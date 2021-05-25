@@ -51,6 +51,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
   header("Refresh:0; url=../user_login.php");
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['booking_destination'])) {
+
+  $db;
+
+  $errors = array();
+
+  if (!empty($_POST['booking_destination'])) {
+
+    $ui = trim($_POST['booked_user']);
+    $bd = trim($_POST['booking_destination']);
+    $bt = trim($_POST['booking_time']);
+    $br = trim($_POST['booking_return']);
+    $vi = trim($_POST['vehicle_id']);
+    $bp = trim($_POST['booking_purpose']);
+    $pa = trim($_POST['booking_passengers']);
+
+    $q = "INSERT INTO booking (vehicle_id, user_id, booking_time, booking_return, booking_destination, booking_purpose, booking_passengers) VALUES ('$vi', '$ui', '$bt', '$br', '$bd', '$bp', '$pa')";
+    mysqli_query($link, $q);
+  }
+
+  mysqli_close($link);
+
+  foreach ($errors as $msg) {
+    alert($msg);
+  }
+
+  header("Refresh:0; url=../booking.php");
+}
+
 function alert($msg)
 {
   echo "<script type='text/javascript'>alert('$msg');</script>";

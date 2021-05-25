@@ -14,6 +14,7 @@ require('../includes/connect_db.php');
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>User ID</th>
                         <th>Forename</th>
                         <th>Surname</th>
                         <th>Email</th>
@@ -27,6 +28,7 @@ require('../includes/connect_db.php');
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>User ID</th>
                         <th>Forename</th>
                         <th>Surname</th>
                         <th>Email</th>
@@ -47,6 +49,7 @@ require('../includes/connect_db.php');
                         while ($row = mysqli_fetch_array($n, MYSQLI_ASSOC)) {
                     ?>
                             <tr>
+                                <td><?php echo "{$row['user_id']}"; ?></td>
                                 <td><?php echo "{$row['forename']}"; ?></td>
                                 <td><?php echo "{$row['surname']}"; ?></td>
                                 <td><?php echo "{$row['email']}"; ?></td>
@@ -93,8 +96,8 @@ require('../includes/connect_db.php');
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" name="surname" class="form-control" placeholder="<?php echo "{$row['surname']}"; ?>" value="<?php if (isset($_POST['surname'])) {
-                                                                                                                                                                                echo $_POST['surname'];
-                                                                                                                                                                            } ?>">
+                                                                                                                                                                            echo $_POST['surname'];
+                                                                                                                                                                        } ?>">
 
                                                     </div>
                                                     <div class="form-group">
@@ -139,13 +142,6 @@ require('../includes/connect_db.php');
                     <?php
                         }
                     }
-
-                    function deleteUser($link, $user_id)
-                    {
-                        $g = "DELETE * FROM users WHERE user_id='$user_id'";
-                        $n = mysqli_query($link, $g);
-                    }
-
                     ?>
                 </tbody>
             </table>
