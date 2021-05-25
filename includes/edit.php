@@ -60,10 +60,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['booking_destination'])
   if (!empty($_POST['booking_destination'])) {
 
     $ui = trim($_POST['booked_user']);
+    $ci = trim($_POST['campus_id']);
     $bd = trim($_POST['booking_destination']);
-    $bt = trim($_POST['booking_time']);
-    $br = trim($_POST['booking_return']);
-    $vi = trim($_POST['vehicle_id']);
+    $bt = date("Y-m-d H:i:s", strtotime($_POST["booking_time"]));
+    $br = date("Y-m-d H:i:s", strtotime($_POST["booking_return"]));
+
+    $l = "SELECT vehicle_id FROM vehicle WHERE vehicle_id NOT IN (SELECT vehicle_id FROM booking WHERE booking_time<='{$br}' AND booking_return>='{$bt}') AND campus_id='$ci' LIMIT 1";
+    $m = mysqli_query($link, $l);
+
+    if (mysqli_num_rows($m) > 0) {
+      while ($car = mysqli_fetch_array($m, MYSQLI_ASSOC)) {
+        $vi = $car['vehicle_id'];
+      }
+    } else {
+      $errors[] = "There are no available vehicles, please try again later.";
+    }
+
     $bp = trim($_POST['booking_purpose']);
     $pa = trim($_POST['booking_passengers']);
 

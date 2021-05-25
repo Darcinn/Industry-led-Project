@@ -101,6 +101,28 @@ require('includes/connect_db.php');
                 <form action="includes/edit.php" method="post">
                     <input type="hidden" id="userId" name="booked_user" value="<?php echo "{$_SESSION['user_id']}"; ?>">
                     <div class="form-group">
+                        <div class="form-group">
+                            <select name="campus_id" class="form-control">
+                                <option value="" selected disabled hidden>Choose Current Campus</option>
+
+                                <?php
+
+                                $f = "SELECT * FROM campus";
+                                $a = mysqli_query($link, $f);
+                                if (mysqli_num_rows($a) > 0) {
+                                    while ($coc = mysqli_fetch_array($a, MYSQLI_ASSOC)) {
+
+                                ?>
+                                        <option value="<?php echo "{$coc['campus_id']}"; ?>"><?php echo "{$coc['campus_name']}"; ?></option>
+                                <?php
+                                    }
+                                }
+
+                                ?>
+
+                            </select>
+
+                        </div>
                         <input type="text" name="booking_destination" class="form-control" placeholder="Destination" value="<?php if (isset($_POST['booking_destination'])) {
                                                                                                                                 echo $_POST['booking_destination'];
                                                                                                                             } ?>" required>
@@ -108,34 +130,11 @@ require('includes/connect_db.php');
                     </div>
                     <div class="form-group">
                         <h6>Booking Start Time</h6>
-                        <input type="datetime-local" name="booking_time" class="form-control" min="<?php echo date('Y-m-d\TH:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
+                        <input type="datetime-local" name="booking_time" class="form-control" min="<?php echo date('Y-m-d H:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d H:i'); ?>" required>
                     </div>
                     <div class="form-group">
                         <h6>Booking Return Time</h6>
-                        <input type="datetime-local" name="booking_return" class="form-control" min="<?php echo date('Y-m-d\TH:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <select name="vehicle_id" class="form-control">
-                            <option value="" selected disabled hidden>Available Vehicles</option>
-
-                            <?php
-
-                            /*$f = "SELECT * FROM booking WHERE booking_date>='{$_POST['booking_time']}' AND booking_return<'{$_POST['booking_return']}'";*/
-                            $f = "SELECT * FROM vehicle";
-                            $a = mysqli_query($link, $f);
-                            if (mysqli_num_rows($a) > 0) {
-                                while ($coc = mysqli_fetch_array($a, MYSQLI_ASSOC)) {
-
-                            ?>
-                                    <option value="<?php echo "{$coc['vehicle_id']}"; ?>"><?php echo "{$coc['vehicle_model']}"; ?></option>
-                            <?php
-                                }
-                            }
-
-                            ?>
-
-                        </select>
-
+                        <input type="datetime-local" name="booking_return" class="form-control" min="<?php echo date('Y-m-d H:i'); ?>" placeholder="Destination" value="<?php echo date('Y-m-d  H:i'); ?>" required>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="5" cols="60" name="booking_purpose" placeholder="Booking Purpose"><?php if (isset($row['booking_purpose'])) {
