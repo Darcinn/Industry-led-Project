@@ -274,7 +274,7 @@ require('includes/connect_db.php');
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="charge_lead_in" class="form-control">
+                                <select name="charge_lead_out" class="form-control">
                                     <option value="" selected disabled hidden>Charge Lead Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -283,7 +283,7 @@ require('includes/connect_db.php');
                         </div>
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="charge_lead_out" class="form-control">
+                                <select name="charge_lead_in" class="form-control">
                                     <option value="" selected disabled hidden>Charge Lead Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -293,15 +293,6 @@ require('includes/connect_db.php');
                     </div>
 
                     <div class="row">
-                        <div class="col-sm">
-                            <div class="form-group">
-                                <select name="charge_post_card_in" class="form-control">
-                                    <option value="" selected disabled hidden>Charge Post Card Present</option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="col-sm">
                             <div class="form-group">
                                 <select name="charge_post_card_out" class="form-control">
@@ -311,18 +302,18 @@ require('includes/connect_db.php');
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="washers_and_wipers_in" class="form-control">
-                                    <option value="" selected disabled hidden>Washers / Wipers Working</option>
+                                <select name="charge_post_card_in" class="form-control">
+                                    <option value="" selected disabled hidden>Charge Post Card Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
                                 <select name="washers_and_wipers_out" class="form-control">
@@ -332,18 +323,18 @@ require('includes/connect_db.php');
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="windows_and_windscreen_in" class="form-control">
-                                    <option value="" selected disabled hidden>Windows Intact</option>
+                                <select name="washers_and_wipers_in" class="form-control">
+                                    <option value="" selected disabled hidden>Washers / Wipers Working</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
                                 <select name="windows_and_windscreen_out" class="form-control">
@@ -353,18 +344,18 @@ require('includes/connect_db.php');
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="mirrors_in" class="form-control">
-                                    <option value="" selected disabled hidden>Mirrors Clean / Intact</option>
+                                <select name="windows_and_windscreen_in" class="form-control">
+                                    <option value="" selected disabled hidden>Windows Intact</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
                                 <select name="mirrors_out" class="form-control">
@@ -374,18 +365,18 @@ require('includes/connect_db.php');
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="indicators_in" class="form-control">
-                                    <option value="" selected disabled hidden>Indicators Working</option>
+                                <select name="mirrors_in" class="form-control">
+                                    <option value="" selected disabled hidden>Mirrors Clean / Intact</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
                                 <select name="indicators_out" class="form-control">
@@ -395,18 +386,18 @@ require('includes/connect_db.php');
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="lights_in" class="form-control">
-                                    <option value="" selected disabled hidden>Lights Working</option>
+                                <select name="indicators_in" class="form-control">
+                                    <option value="" selected disabled hidden>Indicators Working</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
                                 <select name="lights_out" class="form-control">
@@ -416,18 +407,18 @@ require('includes/connect_db.php');
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="horn_in" class="form-control">
-                                    <option value="" selected disabled hidden>Horn Working</option>
+                                <select name="lights_in" class="form-control">
+                                    <option value="" selected disabled hidden>Lights Working</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
                                 <select name="horn_out" class="form-control">
@@ -437,12 +428,21 @@ require('includes/connect_db.php');
                                 </select>
                             </div>
                         </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="horn_in" class="form-control">
+                                    <option value="" selected disabled hidden>Horn Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="seat_belt_in" class="form-control">
+                                <select name="seat_belt_out" class="form-control">
                                     <option value="" selected disabled hidden>Seat Belt Working</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -451,7 +451,7 @@ require('includes/connect_db.php');
                         </div>
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="seat_belt_out" class="form-control">
+                                <select name="seat_belt_in" class="form-control">
                                     <option value="" selected disabled hidden>Seat Belt Working</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -489,7 +489,7 @@ require('includes/connect_db.php');
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="first_aid_in" class="form-control">
+                                <select name="first_aid_out" class="form-control">
                                     <option value="" selected disabled hidden>First Aid Kit Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -498,7 +498,7 @@ require('includes/connect_db.php');
                         </div>
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="first_aid_out" class="form-control">
+                                <select name="first_aid_in" class="form-control">
                                     <option value="" selected disabled hidden>First Aid Kit Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -510,7 +510,7 @@ require('includes/connect_db.php');
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="hi_vis_in" class="form-control">
+                                <select name="hi_vis_out" class="form-control">
                                     <option value="" selected disabled hidden>Hi Vis Jacket Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -519,7 +519,7 @@ require('includes/connect_db.php');
                         </div>
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="hi_vis_out" class="form-control">
+                                <select name="hi_vis_in" class="form-control">
                                     <option value="" selected disabled hidden>High Vis Jacket Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -531,7 +531,7 @@ require('includes/connect_db.php');
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="warning_triangle_in" class="form-control">
+                                <select name="warning_triangle_out" class="form-control">
                                     <option value="" selected disabled hidden>Warning Triangle Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -540,7 +540,7 @@ require('includes/connect_db.php');
                         </div>
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="warning_triangle_out" class="form-control">
+                                <select name="warning_triangle_in" class="form-control">
                                     <option value="" selected disabled hidden>Warning Triangle Present</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -552,7 +552,7 @@ require('includes/connect_db.php');
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="sanitised_in" class="form-control">
+                                <select name="sanitised_out" class="form-control">
                                     <option value="" selected disabled hidden>Vehicle Sanitised</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -561,7 +561,7 @@ require('includes/connect_db.php');
                         </div>
                         <div class="col-sm">
                             <div class="form-group">
-                                <select name="sanitised_out" class="form-control">
+                                <select name="sanitised_in" class="form-control">
                                     <option value="" selected disabled hidden>Vehicle Sanitised</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
