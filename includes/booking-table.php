@@ -41,7 +41,7 @@ require('includes/connect_db.php');
                     <div class="card bg-danger text-white mb-4">
                         <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Log Sheet</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#newLogModal<?php echo "{$row['booking_id']}"; ?>">Add Log Sheet</a>
+                            <a class="small text-white stretched-link" href="#newLogModal" data-toggle="modal">Add Log Sheet</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
@@ -196,6 +196,66 @@ require('includes/connect_db.php');
                     <div class="modal-footer">
                         <div class="form-group">
                             <input type="submit" name="btnEditUser" class="btn btn-dark btn-block" value="Save Changes" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="newLogModal" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Fill Log Sheet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="includes/edit.php" method="post">
+                    <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
+                    <div class="form-group">
+                        <input type="datetime-local" name="log_booking_date" class="form-control" placeholder="Date" value="<?php if (isset($_POST['log_booking_date'])) echo $_POST['log_booking_date']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="log_driver_name" class="form-control" placeholder="Driver Name" value="<?php if (isset($_POST['log_driver_name'])) echo $_POST['log_driver_name']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="log_destination" class="form-control" placeholder="Destination" value="<?php if (isset($_POST['log_destination'])) echo $_POST['log_destination']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="log_purpose_of_trip" class="form-control" placeholder="Purpose of Trip" value="<?php if (isset($_POST['log_purpose_of_trip'])) echo $_POST['log_purpose_of_trip']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <select name="log_booking_passengers" class="form-control">
+                            <option value="" selected disabled hidden>Passengers</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" name="log_booking_start" class="form-control" placeholder="Booking Start Time" value="<?php if (isset($_POST['log_booking_start'])) echo $_POST['log_booking_start']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" name="log_booking_return" class="form-control" placeholder="Booking Return Time" value="<?php if (isset($_POST['log_booking_return'])) echo $_POST['log_booking_return']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="log_start_mileage" class="form-control" placeholder="Mileage Before Use"> value="<?php if (isset($_POST['log_start_mileage'])) echo $_POST['log_start_mileage']; ?>"
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="log_return_mileage" class="form-control" placeholder="Mileage After Use" value="<?php if (isset($_POST['log_return_mileage'])) echo $_POST['log_return_mileage']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="log_trip_mileage" class="form-control" placeholder="Trip Mileage"> value="<?php if (isset($_POST['log_trip_mileage'])) echo $_POST['log_trip_mileage']; ?>"
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <input type="submit" name="btnAddLog" class="btn btn-dark btn-block" value="Save Changes" />
                         </div>
                     </div>
                 </form>
