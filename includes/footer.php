@@ -21,13 +21,6 @@
           <?php endif ?>
         </ul>
       </div>
-      <div class="col-6 col-md text-white">
-        <h5>Terms & Privacy</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="tou.php">Terms Of Use</a></li>
-          <li><a class="text-muted" href="privacy.php">Privacy</a></li>
-        </ul>
-      </div>
   </footer>
 </div>
 
