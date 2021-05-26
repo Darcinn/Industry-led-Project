@@ -42,7 +42,7 @@ if ($_SESSION['account_level'] == "2") {
                         $return = new DateTime("{$row["booking_return"]}");
                         $days = $return->diff($start)->format("%a");
 
-                        $calendar->add_event("Booking ID: {$row['booking_id']} Booking Start: {$row['booking_time']} Booking Return: {$row['booking_return']}", $row['booking_time'], $days);
+                        $calendar->add_event("Booking ID: {$row['booking_id']} Booking Start: {$row['booking_time']} Booking Return: {$row['booking_return']}", $row['booking_time'], $days+1);
                     }
                 }
 
