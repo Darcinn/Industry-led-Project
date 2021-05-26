@@ -217,34 +217,6 @@ require('includes/connect_db.php');
                 <form action="includes/edit.php" method="post">
                     <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
                     <div class="form-group">
-                        <input type="datetime-local" name="log_booking_date" class="form-control" placeholder="Date" value="<?php if (isset($_POST['log_booking_date'])) echo $_POST['log_booking_date']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="log_driver_name" class="form-control" placeholder="Driver Name" value="<?php if (isset($_POST['log_driver_name'])) echo $_POST['log_driver_name']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="log_destination" class="form-control" placeholder="Destination" value="<?php if (isset($_POST['log_destination'])) echo $_POST['log_destination']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="log_purpose_of_trip" class="form-control" placeholder="Purpose of Trip" value="<?php if (isset($_POST['log_purpose_of_trip'])) echo $_POST['log_purpose_of_trip']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <select name="log_booking_passengers" class="form-control">
-                            <option value="" selected disabled hidden>Passengers</option>
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" name="log_booking_start" class="form-control" placeholder="Booking Start Time" value="<?php if (isset($_POST['log_booking_start'])) echo $_POST['log_booking_start']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" name="log_booking_return" class="form-control" placeholder="Booking Return Time" value="<?php if (isset($_POST['log_booking_return'])) echo $_POST['log_booking_return']; ?>">
-                    </div>
-                    <div class="form-group">
                         <input type="text" name="log_start_mileage" class="form-control" placeholder="Mileage Before Use" value="<?php if (isset($_POST['log_start_mileage'])) echo $_POST['log_start_mileage']; ?>">
                     </div>
                     <div class="form-group">
