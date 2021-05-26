@@ -92,6 +92,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['booking_destination'])
   header("Refresh:0; url=../booking.php");
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['booking_id'])) {
+
+  $db;
+
+  $errors = array();
+
+  $id = $_POST['booking_id'];
+
+  if (!empty($_POST['start_mileage'])) {
+    $sm = trim($_POST['start_mileage']);
+    $q = "UPDATE booking SET start_mileage='$sm' WHERE booking_id='$id'";
+    $r = @mysqli_query($link, $q);
+  }
+
+  if (!empty($_POST['return_mileage'])) {
+    $rm = trim($_POST['return_mileage']);
+    $q = "UPDATE booking SET return_mileage='$rm' WHERE booking_id='$id'";
+    $r = @mysqli_query($link, $q);
+
+    $q = "UPDATE booking SET trip_mileage=(return_mileage-start_mileage) WHERE booking_id='$id'";
+    $r = @mysqli_query($link, $q);
+  }
+
+  mysqli_close($link);
+
+  foreach ($errors as $msg) {
+    alert($msg);
+  }
+
+  header("Refresh:0; url=../booking.php");
+}
+
 function alert($msg)
 {
   echo "<script type='text/javascript'>alert('$msg');</script>";

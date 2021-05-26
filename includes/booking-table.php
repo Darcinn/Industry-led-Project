@@ -6,7 +6,7 @@ require('includes/connect_db.php');
 
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-table mr-1"></i>
+        <em class="fas fa-table mr-1"></em>
         Your Bookings
     </div>
     <div class="d-flex flex-row">
@@ -21,7 +21,7 @@ require('includes/connect_db.php');
                         <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Check Sheet</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <a class="small text-white stretched-link" href="#newCheckModal" data-toggle="modal">Add Check Sheet</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            <div class="small text-white"><em class="fas fa-angle-right"></em></div>
                         </div>
                     </div>
                 </div>
@@ -32,20 +32,50 @@ require('includes/connect_db.php');
     </div>
     <div class="d-flex flex-row">
         <?php
-        $c = "SELECT * FROM booking WHERE user_id='{$_SESSION['user_id']}' AND booking_log IS NULL";
+        $c = "SELECT * FROM booking WHERE user_id='{$_SESSION['user_id']}' AND trip_mileage IS NULL";
         $u = mysqli_query($link, $c);
         if (mysqli_num_rows($u) > 0) {
             while ($row = mysqli_fetch_array($u, MYSQLI_ASSOC)) {
         ?>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-danger text-white mb-4">
-                        <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Log Sheet</div>
+                        <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Mileage</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#newLogModal" data-toggle="modal">Add Log Sheet</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            <a class="small text-white stretched-link" href="#editMileageModal<?php echo "{$row['booking_id']}"; ?>" data-toggle="modal">Add Mileage Information</a>
+                            <div class="small text-white"><em class="fas fa-angle-right"></em></div>
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="editMileageModal<?php echo "{$row['booking_id']}"; ?>" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Update Vehicle Mileage</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="includes/edit.php" method="post">
+                                    <input type="hidden" id="userId" name="booking_id" value="<?php echo "{$row['booking_id']}"; ?>">
+                                    <div class="form-group">
+                                        <input type="text" name="start_mileage" class="form-control" placeholder="Mileage Before Use" value="<?php if (isset($_POST['start_mileage'])) echo $_POST['start_mileage']; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="return_mileage" class="form-control" placeholder="Mileage After Use" value="<?php if (isset($_POST['return_mileage'])) echo $_POST['return_mileage']; ?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="form-group">
+                                            <input type="submit" name="btnAddLog" class="btn btn-dark btn-block" value="Submit Vehicle Milage" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
         <?php
             }
         }
@@ -53,7 +83,7 @@ require('includes/connect_db.php');
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable">
                 <thead>
                     <tr>
                         <th>Booking ID</th>
@@ -63,6 +93,9 @@ require('includes/connect_db.php');
                         <th>Destination</th>
                         <th>Purpose</th>
                         <th>Passenger Count</th>
+                        <th>Start Mileage</th>
+                        <th>Return Mileage</th>
+                        <th>Trip Mileage</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -75,6 +108,9 @@ require('includes/connect_db.php');
                         <th>Destination</th>
                         <th>Purpose</th>
                         <th>Passenger Count</th>
+                        <th>Start Mileage</th>
+                        <th>Return Mileage</th>
+                        <th>Trip Mileage</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -106,6 +142,9 @@ require('includes/connect_db.php');
                                 <td><?php echo "{$row['booking_destination']}"; ?></td>
                                 <td><?php echo "{$row['booking_purpose']}"; ?></td>
                                 <td><?php echo "{$row['booking_passengers']}"; ?></td>
+                                <td><?php echo "{$row['start_mileage']}"; ?></td>
+                                <td><?php echo "{$row['return_mileage']}"; ?></td>
+                                <td><?php echo "{$row['trip_mileage']}"; ?></td>
                                 <td>
                                     <div class="row">
                                         <form action="includes/delete.php" method="post">
@@ -204,38 +243,6 @@ require('includes/connect_db.php');
     </div>
 </div>
 
-<div class="modal fade" id="newLogModal" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Fill Log Sheet</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="includes/edit.php" method="post">
-                    <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
-                    <div class="form-group">
-                        <input type="text" name="log_start_mileage" class="form-control" placeholder="Mileage Before Use" value="<?php if (isset($_POST['log_start_mileage'])) echo $_POST['log_start_mileage']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="log_return_mileage" class="form-control" placeholder="Mileage After Use" value="<?php if (isset($_POST['log_return_mileage'])) echo $_POST['log_return_mileage']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="log_trip_mileage" class="form-control" placeholder="Trip Mileage" value="<?php if (isset($_POST['log_trip_mileage'])) echo $_POST['log_trip_mileage']; ?>">
-                    </div>
-                    <div class="modal-footer">
-                        <div class="form-group">
-                            <input type="submit" name="btnAddLog" class="btn btn-dark btn-block" value="Submit Log Sheet" />
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade" id="newCheckModal" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -247,7 +254,7 @@ require('includes/connect_db.php');
             </div>
             <div class="modal-body">
                 <form action="includes/edit.php" method="post">
-                    <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
+                    <input type="hidden" id="userId" name="booking_id" value="<?php echo "{$row['booking_id']}"; ?>">
 
                     <div class="row">
                         <div class="col-sm">
