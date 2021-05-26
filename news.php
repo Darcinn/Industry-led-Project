@@ -43,47 +43,48 @@ require('includes/connect_db.php');
   </header>
 <?php endif ?>
 
-<?php
+<div class="d-flex justify-content-center">
+  <h2>All News Articles</h2>
+</div>
 
-# Get passed movie id and assign it to a variable.
-if (isset($_GET['id'])) $id = $_GET['id'];
+<!--News Cards-->
+<div class="d-flex justify-content-center">
+  <div class="row d-flex justify-content-center mx-auto">
 
-# Open database connection.
-require('includes/connect_db.php');
-
-$q = "SELECT * FROM news WHERE post_id = '$id'";
-$r = mysqli_query($link, $q);
-
-#Create conditional if statement which will execute code if the condition is TRUE.
-if (mysqli_num_rows($r) > 0) {
-
-
-    while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-        echo '
-        <div class="container">
-        <h1 class="card-title mb-3">'  . $row['post_title'] . '</h1>
-        <h2 class="card-subtitle mb-3 text-muted">Posted On: '  . $row['post_date'] . ' </h2>
+    <?php
+    $q = "SELECT * FROM news order by post_id desc";
+    $r = mysqli_query($link, $q);
+    if (mysqli_num_rows($r) > 0) {
+      while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+        $short = substr($row['post_content'], 0, 197) . "...";  // returns "abcde"
+    ?>
+        <div class="card" style="width: 33rem; margin:1rem;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"><?php echo "{$row['post_title']}"; ?></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><?php echo "{$row['post_date']}"; ?></h6>
+            <p class="card-text"><?php echo "$short"; ?></p>
+            <div class="card-footer bg-transparent mt-auto">
+              <a href="article.php?id=<?php echo "{$row['post_id']}"; ?>" class="card-link">Read Full Article</a>
+            </div>
+          </div>
         </div>
-         <div class="container">
-         <hr class="featurette-divider text-white">
-         </div>
-         <div class="container">
-         <div class="row">
-          <p>'  . $row['post_content'] . '</p>
-        </div>
-        <hr class="featurette-divider text-white">
-        <a id="myLink" title="Return to previous page" href="#" onclick="goBack();return false;">Return to previous page</a>
-        </div>
-        <hr class="featurette-divider text-white">
-      ';
+
+    <?php
+      }
     }
-}
-
-?>
+    # Or display message.
+    else {
+      echo '<p>There are currently no news posts</p>';
+    }
+    ?>
+  </div>
+</div>
+<div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+<a href="index.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Return Home</a>
+</div>
 
 <?php
 
 include('includes/footer.php');
-
 
 ?>

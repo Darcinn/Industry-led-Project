@@ -44,7 +44,7 @@ require('includes/connect_db.php');
 <?php endif ?>
 
 <div class="d-flex justify-content-center">
-  <h2>Fleet Master News</h2>
+  <h2>Recent News Articles</h2>
 </div>
 
 <!--News Cards-->
@@ -52,8 +52,7 @@ require('includes/connect_db.php');
   <div class="row d-flex justify-content-center mx-auto">
 
     <?php
-    $lim = "3";
-    $q = "SELECT * FROM news order by post_id desc LIMIT $lim";
+    $q = "SELECT * FROM news order by post_id desc LIMIT 3";
     $r = mysqli_query($link, $q);
     if (mysqli_num_rows($r) > 0) {
       while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
@@ -81,7 +80,7 @@ require('includes/connect_db.php');
   </div>
 </div>
 <div class="d-flex justify-content-center" style="padding-bottom: 20px;">
-  <button class="btn btn-secondary btn-lg" role="button" aria-disabled="true" type="button">Show More!</button>
+<a href="news.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">View All Articles</a>
 </div>
 
 <?php
