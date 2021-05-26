@@ -90,8 +90,8 @@ if (isset($_SESSION['user_id'])) {
 									} ?></td>
 							</tr>
 							<tr>
-							<td>License Expires In</td>
-							<td>X Days</td>
+								<td>License Expires In</td>
+								<td>X Days</td>
 							</tr>
 
 						</tbody>
@@ -155,7 +155,7 @@ include('includes/footer.php');
 	=========================== -->
 
 
-	<div class="modal fade" id="license" tabindex="-1" role="dialog" aria-labelledby="license" aria-hidden="true">
+<div class="modal fade" id="license" tabindex="-1" role="dialog" aria-labelledby="license" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -168,12 +168,12 @@ include('includes/footer.php');
 				<form action="includes/edit.php" method="post">
 					<input type="hidden" id="userId" name="user_id" value="<?php echo "{$_SESSION['user_id']}"; ?>">
 					<div class="form-group">
-					<h6>DVLA Check Code</h6>
+						<h6>DVLA Check Code</h6>
 						<input type="text" name="check_code" class="form-control" placeholder="<?php echo "{$_SESSION['check_code']}"; ?>" value="<?php echo "{$_SESSION['check_code']}"; ?>">
 
 					</div>
 					<div class="form-group">
-					<h6>License Expiry Date</h6>
+						<h6>License Expiry Date</h6>
 						<input id="datefield" type="date" min="<?php echo date('Y-m-d'); ?>" name="license_expiry" class="form-control" placeholder="<?php echo "{$_SESSION['license_expiry']}"; ?>" value="<?php echo "{$_SESSION['license_expiry']}"; ?>">
 
 					</div>
@@ -239,7 +239,7 @@ include('includes/footer.php');
 	=========================== -->
 
 
-	<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
+<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -269,3 +269,18 @@ include('includes/footer.php');
 		</div>
 	</div>
 </div>
+
+
+
+
+<?php
+
+if ($_SESSION['account_status'] == 1) {
+	alert("Account awating approval, you may book once your account has been approved.");
+}
+
+function alert($msg)
+{
+	echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+?>
