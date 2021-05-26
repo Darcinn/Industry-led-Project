@@ -63,11 +63,11 @@
                 </div>
 
                 <div class="sb-sidenav-menu-heading">Logs</div>
-                <a class="nav-link" href="vehiclelogs.php">
+                <a class="nav-link" href="checks.php">
                     <div class="sb-nav-link-icon"><em class="fas fa-search"></em></div>
                     Vehicle Check Sheets
                 </a>
-                <a class="nav-link" href="triplogs.php">
+                <a class="nav-link" href="trips.php">
                     <div class="sb-nav-link-icon"><em class="fas fa-map-marker"></em></div>
                     Trip Logs
                 </a>

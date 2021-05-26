@@ -7,7 +7,7 @@ require('../includes/connect_db.php');
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table mr-1"></i>
-        Your Bookings
+        User Bookings
     </div>
     <div class="card-body">
         <div class="table-responsive">

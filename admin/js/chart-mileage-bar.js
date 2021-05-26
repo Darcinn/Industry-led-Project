@@ -3,16 +3,16 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
-var ctx = document.getElementById("myViewChart");
+var ctx = document.getElementById("myMileageChart");
 var myViewChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ["January", "February", "March", "April", "May"],
     datasets: [{
-      label: "Views",
+      label: "Miles",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [42150, 53102, 62501, 78410, 98210],
+      data: [3712, 3831, 3981, 4210, 4183],
     }],
   },
   options: {
@@ -31,7 +31,7 @@ var myViewChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 100000,
+          max: 10000,
           maxTicksLimit: 5
         },
         gridLines: {

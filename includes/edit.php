@@ -65,8 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['booking_destination'])
     $bt = date("Y-m-d H:i:s", strtotime($_POST["booking_time"]));
     $br = date("Y-m-d H:i:s", strtotime($_POST["booking_return"]));
 
-    $l = "SELECT vehicle_id FROM vehicle WHERE vehicle_id NOT IN (SELECT vehicle_id FROM booking WHERE booking_time<='{$br}' AND booking_return>='{$bt}') AND campus_id='$ci' LIMIT 1";
-    $m = mysqli_query($link, $l);
+    $z = "SELECT vehicle_id FROM vehicle WHERE vehicle_id NOT IN (SELECT vehicle_id FROM booking WHERE booking_time<='{$br}' AND booking_return>='{$bt}') AND campus_id='$ci' LIMIT 1";
+    $m = mysqli_query($link, $z);
 
     if (mysqli_num_rows($m) > 0) {
       while ($car = mysqli_fetch_array($m, MYSQLI_ASSOC)) {

@@ -28,7 +28,7 @@ if ($_SESSION['account_level'] == "2") {
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-pie mr-1"></i>
-                                Current Sessions
+                                Current Users
                             </div>
                             <div class="card-body"><canvas id="myCurrentChart" width="100%" height="40"></canvas></div>
                         </div>
@@ -37,9 +37,9 @@ if ($_SESSION['account_level'] == "2") {
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-bar mr-1"></i>
-                                Monthly Views
+                                Monthly Mileage
                             </div>
-                            <div class="card-body"><canvas id="myViewChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body"><canvas id="myMileageChart" width="100%" height="40"></canvas></div>
                         </div>
                     </div>
                 </div>

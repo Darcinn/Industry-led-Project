@@ -7,9 +7,9 @@ var ctx = document.getElementById("myCurrentChart");
 var myCurrentChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ["Subscribed", "Free"],
+    labels: ["Active", "Blocked"],
     datasets: [{
-      data: [81, 271],
+      data: [3, 1],
       backgroundColor: ['#007bff', '#dc3545'],
     }],
   },
