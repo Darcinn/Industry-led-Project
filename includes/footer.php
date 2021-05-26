@@ -9,6 +9,7 @@
         <h5>Navigation</h5>
         <ul class="list-unstyled text-small">
           <li><a class="text-muted" href="bookings.php">Bookings</a></li>
+          <li><a class="text-muted" href="news.php">News</a></li>
         </ul>
       </div>
       <div class="col-6 col-md text-white">
