@@ -20,7 +20,7 @@ require('includes/connect_db.php');
                     <div class="card bg-danger text-white mb-4">
                         <div class="card-body">Booking ID: <?php echo "{$row['booking_id']}"; ?> - Missing Check Sheet</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#newCheckModal<?php echo "{$row['booking_id']}"; ?>">Add Check Sheet</a>
+                            <a class="small text-white stretched-link" href="#newCheckModal" data-toggle="modal">Add Check Sheet</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
@@ -245,17 +245,372 @@ require('includes/connect_db.php');
                         <input type="datetime-local" name="log_booking_return" class="form-control" placeholder="Booking Return Time" value="<?php if (isset($_POST['log_booking_return'])) echo $_POST['log_booking_return']; ?>">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="log_start_mileage" class="form-control" placeholder="Mileage Before Use"> value="<?php if (isset($_POST['log_start_mileage'])) echo $_POST['log_start_mileage']; ?>"
+                        <input type="text" name="log_start_mileage" class="form-control" placeholder="Mileage Before Use" value="<?php if (isset($_POST['log_start_mileage'])) echo $_POST['log_start_mileage']; ?>">
                     </div>
                     <div class="form-group">
                         <input type="text" name="log_return_mileage" class="form-control" placeholder="Mileage After Use" value="<?php if (isset($_POST['log_return_mileage'])) echo $_POST['log_return_mileage']; ?>">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="log_trip_mileage" class="form-control" placeholder="Trip Mileage"> value="<?php if (isset($_POST['log_trip_mileage'])) echo $_POST['log_trip_mileage']; ?>"
+                        <input type="text" name="log_trip_mileage" class="form-control" placeholder="Trip Mileage" value="<?php if (isset($_POST['log_trip_mileage'])) echo $_POST['log_trip_mileage']; ?>">
                     </div>
                     <div class="modal-footer">
                         <div class="form-group">
-                            <input type="submit" name="btnAddLog" class="btn btn-dark btn-block" value="Save Changes" />
+                            <input type="submit" name="btnAddLog" class="btn btn-dark btn-block" value="Submit Log Sheet" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="newCheckModal" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Fill Check Sheet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="includes/edit.php" method="post">
+                    <input type="hidden" id="userId" name="user_id" value="<?php echo "{$row['user_id']}"; ?>">
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <h5> Car Out </h5>
+                            <div class="form-group">
+                                <input type="text" name="check_charge_out" class="form-control" placeholder="Vehicle Charge Before" value="<?php if (isset($_POST['check_charge_out'])) echo $_POST['check_charge_out']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <h5> Car In </h5>
+                            <div class="form-group">
+                                <input type="text" name="check_charge_in" class="form-control" placeholder="Vehicle Charge After" value="<?php if (isset($_POST['check_charge_in'])) echo $_POST['check_charge_in']; ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="charge_lead_in" class="form-control">
+                                    <option value="" selected disabled hidden>Charge Lead Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="charge_lead_out" class="form-control">
+                                    <option value="" selected disabled hidden>Charge Lead Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="charge_post_card_in" class="form-control">
+                                    <option value="" selected disabled hidden>Charge Post Card Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="charge_post_card_out" class="form-control">
+                                    <option value="" selected disabled hidden>Charge Post Card Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="washers_and_wipers_in" class="form-control">
+                                    <option value="" selected disabled hidden>Washers / Wipers Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="washers_and_wipers_out" class="form-control">
+                                    <option value="" selected disabled hidden>Washers / Wipers Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="windows_and_windscreen_in" class="form-control">
+                                    <option value="" selected disabled hidden>Windows Intact</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="windows_and_windscreen_out" class="form-control">
+                                    <option value="" selected disabled hidden>Windows Intact</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="mirrors_in" class="form-control">
+                                    <option value="" selected disabled hidden>Mirrors Clean / Intact</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="mirrors_out" class="form-control">
+                                    <option value="" selected disabled hidden>Mirrors Clean / Intact</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="indicators_in" class="form-control">
+                                    <option value="" selected disabled hidden>Indicators Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="indicators_out" class="form-control">
+                                    <option value="" selected disabled hidden>Indicators Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="lights_in" class="form-control">
+                                    <option value="" selected disabled hidden>Lights Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="lights_out" class="form-control">
+                                    <option value="" selected disabled hidden>Lights Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="horn_in" class="form-control">
+                                    <option value="" selected disabled hidden>Horn Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="horn_out" class="form-control">
+                                    <option value="" selected disabled hidden>Horn Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="seat_belt_in" class="form-control">
+                                    <option value="" selected disabled hidden>Seat Belt Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="seat_belt_out" class="form-control">
+                                    <option value="" selected disabled hidden>Seat Belt Working</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <input type="text" name="body_damage_out" class="form-control" placeholder="Damage Before (Describe)" value="<?php if (isset($_POST['body_damage_out'])) echo $_POST['body_damage_out']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <input type="text" name="body_damage_in" class="form-control" placeholder="Damage After (Describe)" value="<?php if (isset($_POST['body_damage_in'])) echo $_POST['body_damage_in']; ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <input type="text" name="tyre_condition_out" class="form-control" placeholder="Tyre Condition Before (Describe)" value="<?php if (isset($_POST['tyre_condition_out'])) echo $_POST['tyre_condition_out']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <input type="text" name="tyre_condition_in" class="form-control" placeholder="Tyre Condition After (Describe)" value="<?php if (isset($_POST['tyre_condition_in'])) echo $_POST['tyre_condition_in']; ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="first_aid_in" class="form-control">
+                                    <option value="" selected disabled hidden>First Aid Kit Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="first_aid_out" class="form-control">
+                                    <option value="" selected disabled hidden>First Aid Kit Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="hi_vis_in" class="form-control">
+                                    <option value="" selected disabled hidden>Hi Vis Jacket Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="hi_vis_out" class="form-control">
+                                    <option value="" selected disabled hidden>High Vis Jacket Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="warning_triangle_in" class="form-control">
+                                    <option value="" selected disabled hidden>Warning Triangle Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="warning_triangle_out" class="form-control">
+                                    <option value="" selected disabled hidden>Warning Triangle Present</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="sanitised_in" class="form-control">
+                                    <option value="" selected disabled hidden>Vehicle Sanitised</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <select name="sanitised_out" class="form-control">
+                                    <option value="" selected disabled hidden>Vehicle Sanitised</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>Comments and Details</h5>
+                        <input type="text" name="comments" class="form-control" placeholder="Comments on Vehicle" value="<?php if (isset($_POST['comments'])) echo $_POST['comments']; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <select name="confirmation" class="form-control">
+                            <option value="" selected disabled hidden>Vehicle is in Condition Indicated on This Form</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="driver_name" class="form-control" placeholder="Driver Name" value="<?php if (isset($_POST['driver_name'])) echo $_POST['driver_name']; ?>">
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <input type="submit" name="btnAddCheck" class="btn btn-dark btn-block" value="Submit Check Sheet" />
                         </div>
                     </div>
                 </form>
