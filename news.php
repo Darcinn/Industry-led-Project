@@ -58,7 +58,7 @@ require('includes/connect_db.php');
       while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
         $short = substr($row['post_content'], 0, 197) . "...";  // returns "abcde"
     ?>
-        <div class="card" style="width: 33rem; margin:1rem;">
+        <div class="card col-xl-3 mx-2 mt-2">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title"><?php echo "{$row['post_title']}"; ?></h5>
             <h6 class="card-subtitle mb-2 text-muted"><?php echo "{$row['post_date']}"; ?></h6>
@@ -79,7 +79,7 @@ require('includes/connect_db.php');
     ?>
   </div>
 </div>
-<div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+<div class="d-flex mt-2 justify-content-center" style="padding-bottom: 20px;">
 <a href="index.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Return Home</a>
 </div>
 

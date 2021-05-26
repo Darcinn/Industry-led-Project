@@ -12,7 +12,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['account_status'] == 2) {
 }
 require('includes/connect_db.php');
 
-
 include('includes/booking-table.php');
 
 include('includes/calendar.php');
@@ -28,7 +27,7 @@ if (mysqli_num_rows($r) > 0) {
     $return = new DateTime("{$row["booking_return"]}");
     $days = $return->diff($start)->format("%a");
 
-    $calendar->add_event("Booking ID: {$row['booking_id']} Booking Start: {$row['booking_time']} Booking Return: {$row['booking_return']}", $row['booking_time'], $days);
+    $calendar->add_event("Booking ID: {$row['booking_id']} Booking Start: {$row['booking_time']} Booking Return: {$row['booking_return']}", $row['booking_time'], $days+1);
   }
 }
 
