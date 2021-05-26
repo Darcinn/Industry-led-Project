@@ -17,7 +17,7 @@
 
 
   <!--mystylesheet-->
-  <title>Webflix</title>
+  <title>EC Fleet Management</title>
 
   <!-- Hotjar Tracking Code for http://webdev.edinburghcollege.ac.uk/~HNDSOFTS2A4/ -->
   <script>
