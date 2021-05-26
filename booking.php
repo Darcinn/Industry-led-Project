@@ -11,10 +11,11 @@ if (isset($_SESSION['user_id']) && $_SESSION['account_status'] == 2) {
   header("Location: login.php");
 }
 require('includes/connect_db.php');
-include('includes/calendar.php');
 
 
 include('includes/booking-table.php');
+
+include('includes/calendar.php');
 
 $calendar = new Calendar(date('Y-m-d'));
 
